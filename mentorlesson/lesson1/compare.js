@@ -79,6 +79,7 @@ function compare4() {
   console.log('string')
 }
 console.log(compare3() === compare4()) // true
+// it looks like case1, but case2 is something strange 
 
 // function case3
 function compare5() {
@@ -88,7 +89,7 @@ function compare6() {
   console.log('456')
 }
 console.log(compare5() === compare6()) // true
-// case2 & case3: When we use console.log, even though value was not the same, it always be true.
+// case2 & case3: when we use console.log, even though value was not the same, it always be true.
 
 // function case4
 function compare7() {
