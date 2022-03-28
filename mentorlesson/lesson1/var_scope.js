@@ -90,3 +90,4 @@ console.log(g, h) // 5. 1, 2
 // 1 2
 
 // in order to avoid confusion, never forget to declare
+// not recommend using var
