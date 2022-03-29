@@ -1,11 +1,8 @@
-var a = 1
-var arr = []
-
 // object
 // key-value pair
 var obj = {
   name: 'Peter',
-  address: 'Taiwan',
+  address: 'America',
   phone: '0123456789',
   family: {
     father: {
@@ -19,7 +16,8 @@ var obj = {
 
 console.log(obj)
 console.log(obj.name)
-console.log(obj.family.mother.name)
+console.log(obj.family.father.name)
+console.log(obj.family.mother['name'])
 
 // object can include anything like String, Number, Boolean, Array, Object, Function.
 

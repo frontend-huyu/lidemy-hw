@@ -40,4 +40,4 @@ exec(function () { // anonymous function
 })
 
 
-// note: function and anonymous function difference is readability when we debug
+// note: function and anonymous function difference's is readability when we debug

@@ -17,12 +17,12 @@ console.log(1 === '1') // false
 console.log(1 === 1) // true
 console.log('hello' === 'hello') // true
 
-// But if it's not Primitive type, even use '==', it doesn't be true
+// But if it's not Primitive type, even use '==', it won't be true
 console.log([1] == [1]) // false // by reference
 console.log({ a: 1 } == { a: 1 }) // false // by reference
 
 
-// by value
+// pass by value
 // Primitive type: String, Number, Boolean, BigInt, Symbol, undefined
 console.log('hello' === 'hello') // true
 console.log(1 === 1) // true
@@ -44,21 +44,26 @@ console.log(undefined === undefined) // true
 console.log(null === null) // true
 
 
-// by reference
+// pass by reference
 // Object type: Array, Object, function
 // Array
 var a = [1]
 var b = [1]
+var c = b
 console.log(a == b) // false
+console.log(b === c) // true
 
 // Object
-var c = {
-  a: 1
-}
 var d = {
   a: 1
 }
-console.log(c == d) // false
+var e = {
+  a: 1
+}
+var f = e
+console.log(d == e) // false
+console.log(e === f) // true
+
 
 // function has special case
 // function case1
