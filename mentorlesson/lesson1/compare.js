@@ -23,24 +23,29 @@ console.log({ a: 1 } == { a: 1 }) // false // by reference
 
 
 // pass by value
-// Primitive type: String, Number, Boolean, BigInt, Symbol, undefined
+// Primitive types: String, Number, Boolean, BigInt, Symbol
 console.log('hello' === 'hello') // true
 console.log(1 === 1) // true
 console.log(true === true) // true
 console.log(false === false) // true
 
+
+// typeof function, so it pass by reference?
 var hugeInteger = BigInt(9007199254740991)
 var hugeString = BigInt('9007199254740991')
 console.log(hugeInteger === hugeString) // true
 
+// typeof function, so it pass by reference?
 console.log(Symbol('aaa') === Symbol('aaa')) // false
 var sym1 = Symbol('bbb')
 var sym2 = sym1
 console.log(sym2 === sym1) // true
 
-console.log(undefined === undefined) // true
 
-// null: null
+// no value: undefined & null
+// undefined: variable has declared but has not yet been assigned a value
+console.log(undefined === undefined) // true
+// null: null is an assignment value, it can be assigned to variable as a representation of no value
 console.log(null === null) // true
 
 
