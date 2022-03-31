@@ -18,8 +18,11 @@ console.log(1 === 1) // true
 console.log('hello' === 'hello') // true
 
 // But if it's not Primitive type, even use '==', it won't be true
-console.log([1] == [1]) // false // by reference
-console.log({ a: 1 } == { a: 1 }) // false // by reference
+console.log([1] == [1]) // false // by sharing
+console.log({ a: 1 } == { a: 1 }) // false // by sharing
+
+
+// pass by value, pass by reference, pass by sharing -> [JS101]
 
 
 // pass by value
@@ -29,13 +32,13 @@ console.log(1 === 1) // true
 console.log(true === true) // true
 console.log(false === false) // true
 
-
-// typeof function, so it pass by reference?
+// it's strange, still don't know how to explain
+// typeof function, so it pass by sharing?
 var hugeInteger = BigInt(9007199254740991)
 var hugeString = BigInt('9007199254740991')
 console.log(hugeInteger === hugeString) // true
 
-// typeof function, so it pass by reference?
+// typeof function, so it pass by sharing?
 console.log(Symbol('aaa') === Symbol('aaa')) // false
 var sym1 = Symbol('bbb')
 var sym2 = sym1
@@ -49,7 +52,7 @@ console.log(undefined === undefined) // true
 console.log(null === null) // true
 
 
-// pass by reference
+// pass by sharing
 // Object type: Array, Object, function
 // Array
 var a = [1]

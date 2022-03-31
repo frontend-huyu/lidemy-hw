@@ -1,4 +1,5 @@
-// by reference means it refer to an address in computer
+// by sharing means it refer to an address in computer
+// it's different from by reference -> [JS101]
 var a = {
   name: 'Peter'
 }
