@@ -11,6 +11,7 @@ function addOne(arr, n) {
   }
   return counter
 }
+
 // arr[0], [1], [2]
 // addThree
 function addThree(arr, n) {
@@ -24,6 +25,7 @@ function addThree(arr, n) {
   }
   return counter
 }
+
 // arr[2]
 // addTwo
 function addTwo(arr, n) {
@@ -128,51 +130,43 @@ function winner(arr) {
   console.log(newArr)
   let length = newArr.length - 1
 
-  if (indexZero(newArr) && indexOne(newArr) &&
-    indexTwo(newArr) && indexThree(newArr) &&
-    indexSix(newArr)) {
-    console.log(2)
+  if (newArr[length] === '') {
+    // console.log(1)
+    return 'draw'
+  } else if ((indexZero(newArr) || indexOne(newArr) ||
+    indexTwo(newArr) || indexThree(newArr) ||
+    indexSix(newArr)) === undefined) {
+    // console.log(2)
     return 'draw'
   } else {
-    console.log(3)
+    // console.log(3)
     return indexZero(newArr) || indexOne(newArr) ||
       indexTwo(newArr) || indexThree(newArr) ||
       indexSix(newArr)
   }
-
-
-  if (newArr[length] === '') {
-    console.log(3)
-    return 'draw'
-  }
-
 }
 
-
-
-// console.log(winner([
-//   'O', 'O', 'X'
-// ]))
+//
+console.log(winner([
+  'O', 'O', 'X'
+])) // draw
 console.log(winner([
   'O', 'O', 'X',
   'O', 'X', ''
-]))
-
-
-// console.log(winner([
-//   ['O', 'O', 'X'],
-//   ['O', 'X', 'X'],
-//   ['O', 'X', 'O']
-// ]))
-
-// console.log(winner([
-//   ['O', 'O', 'X'],
-//   ['O', 'X', 'X'],
-//   ['X', 'X', 'O']
-// ]))
-
-// console.log(winner([
-//   ['O', 'O', 'X'],
-//   ['O', 'O', 'X'],
-//   ['X', 'X', '']
-// ]))
+])) // draw
+//
+console.log(winner([
+  ['O', 'O', 'X'],
+  ['O', 'X', 'X'],
+  ['O', 'X', 'O']
+])) // winner is O
+console.log(winner([
+  ['O', 'O', 'X'],
+  ['O', 'X', 'X'],
+  ['X', 'X', 'O']
+])) // winner is X
+console.log(winner([
+  ['O', 'O', 'X'],
+  ['O', 'O', 'X'],
+  ['X', 'X', '']
+])) // draw
