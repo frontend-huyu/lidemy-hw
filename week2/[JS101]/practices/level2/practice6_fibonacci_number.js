@@ -11,9 +11,10 @@ function fibonacci(n) {
       arr.push(sum)
     }
   }
+  // console.log(arr)
   return arr[n]
 }
 
-// console.log(fibonacci(1))
-// console.log(fibonacci(2))
-console.log(fibonacci(8))
+// console.log(fibonacci(1)) // 1
+// console.log(fibonacci(2)) // 1
+console.log(fibonacci(8)) // 21

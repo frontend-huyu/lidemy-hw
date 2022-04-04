@@ -11,9 +11,9 @@ function findNthMin(arr, n) {
   // console.log(arr)
   return arr[n - 1]
 }
-// findNthMin([1, 2, 3, 4, 5], 1) // 1
-// findNthMin([1, 3, 5, 7, 9], 3) // 5
-// findNthMin([1, 1, 1, 1, 1], 2) // 1
+findNthMin([1, 2, 3, 4, 5], 1) // 1
+findNthMin([1, 3, 5, 7, 9], 3) // 5
+findNthMin([1, 1, 1, 1, 1], 2) // 1
 
 // console.log(findNthMin([1, 2, 5, 1, 4, 3, 6, 5], 5))
 

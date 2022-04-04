@@ -6,7 +6,7 @@ function findMin(arr) {
         result = arr[i]
         // console.log('i:', arr[i])
         // console.log('j:', arr[j])
-      } else if (arr[i] > arr[j]) {
+      } else {
         result = arr[j]
         // console.log('i:', arr[i])
         // console.log('j:', arr[j])
@@ -18,3 +18,4 @@ function findMin(arr) {
 
 findMin([1, 2, 5, 6, 99, 4, 5])
 findMin([1, 6, 0, 33, 44, 88, -10])
+// console.log(findMin([1, 6, 0, 33, 44, 88, -10]))

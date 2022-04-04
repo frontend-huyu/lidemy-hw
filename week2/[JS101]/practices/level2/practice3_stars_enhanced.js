@@ -8,13 +8,14 @@ function star(n) {
 
 function stars2(n) {
   let result = ''
-  console.log(result)
-  for (let i = 1; i < n; i++) {
-    result += star(i) + '\n'
+  for (let i = 1; i <= n; i++) {
+    result += star(i)
+    if (i !== n) {
+      result += '\n'
+    }
   }
-  for (let i = n; i >= 1; i--) {
-
-    result += star(i) + '\n'
+  for (let j = n; j > 1; j--) {
+    result += '\n' + star(j - 1)
   }
   console.log(result)
 }
@@ -22,4 +23,3 @@ function stars2(n) {
 stars2(1)
 stars2(3)
 stars2(5)
-
