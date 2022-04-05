@@ -26,10 +26,12 @@ function trunk(n) {
   let trunk = ''
   for (let i = 0; i < n; i++) {
     trunk += '_'.repeat(n - 1)
-    for (let j = 0; j < 1; j++) {
-      trunk += '*'
+    if (n > 1) {
+      for (let j = 0; j < 1; j++) {
+        trunk += '*'
+      }
+      trunk += '\n'
     }
-    trunk += '\n'
   }
   return trunk
 }
@@ -39,11 +41,12 @@ function tree(n) {
   let result = ''
   result += spaceWithStar(n)
   result += trunk(n)
-  return result
+  console.log(result)
 }
 
-// console.log(tree(1))
-// console.log(tree(2))
-// console.log(tree(5))
-// console.log(tree(7))
-// console.log(tree(9))
+tree(1)
+tree(2)
+tree(5)
+// tree(7)
+// tree(9)
+// problem: over a '\n'

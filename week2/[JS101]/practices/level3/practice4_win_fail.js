@@ -128,31 +128,33 @@ let index = [
 function winner(arr) {
   let newArr = [].concat(...arr)
   console.log(newArr)
-  let length = newArr.length - 1
 
-  if (newArr[length] === '') {
-    // console.log(1)
-    return 'draw'
-  } else if ((indexZero(newArr) || indexOne(newArr) ||
-    indexTwo(newArr) || indexThree(newArr) ||
-    indexSix(newArr)) === undefined) {
-    // console.log(2)
-    return 'draw'
-  } else {
-    // console.log(3)
-    return indexZero(newArr) || indexOne(newArr) ||
+  if (newArr.length > 0) {
+    if ((indexZero(newArr) || indexOne(newArr) ||
       indexTwo(newArr) || indexThree(newArr) ||
-      indexSix(newArr)
+      indexSix(newArr)) === undefined) {
+      return 'draw'
+    } else {
+      return indexZero(newArr) || indexOne(newArr) ||
+        indexTwo(newArr) || indexThree(newArr) ||
+        indexSix(newArr)
+    }
+  } else {
+    return 'draw'
   }
 }
 
 //
 console.log(winner([
-  'O', 'O', 'X'
+  ['O', 'X', 'O']
 ])) // draw
 console.log(winner([
-  'O', 'O', 'X',
-  'O', 'X', ''
+  ['O', 'O', ''],
+  ['X', 'X', 'X']
+])) // winner is X
+console.log(winner([
+  ['O', 'O', 'X'],
+  ['O', 'X', '']
 ])) // draw
 //
 console.log(winner([
