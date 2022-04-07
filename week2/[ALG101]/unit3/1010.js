@@ -11,11 +11,11 @@ rl.on('line', function (line) {
 });
 
 // end = ctrl + d, and callback solve()
-rl.on('close', function() {
+rl.on('close', function () {
   solve(lines)
 })
 
 // write your solution in here, and remember lines is an array
 function solve(lines) {
-
+  
 }

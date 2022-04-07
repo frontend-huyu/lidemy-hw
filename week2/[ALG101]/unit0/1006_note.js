@@ -24,3 +24,5 @@
 
 // x = n/2
 // 3x - 2
+
+// solution by others
