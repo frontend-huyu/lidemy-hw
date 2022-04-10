@@ -17,29 +17,23 @@ rl.on('close', function () {
 
 // write your solution in here, and remember lines is an array
 function solve(lines) {
-  let n = Number(lines[0])
-  if (n < 0 || n > 100) return
-  let str = lines[1]
-  if (str.length < 1 || str.length > 1000) return
-  // console.log(str)
-  // console.log('a'.charCodeAt()) // 97
-  // console.log('z'.charCodeAt()) // 122
-
-  let result = ''
-  for (let i = 0; i < str.length; i++) {
-    // console.log(str[i].charCodeAt())
-    // console.log(lowerCode(str[i].charCodeAt(), n))
-    result += String.fromCharCode(97 + lowerCode(str[i].charCodeAt(), n))
-  }
-  console.log(result)
+  let str = lines[0]
+  toLowerCase(str)
 }
 
-function lowerCode(char, n) {
-  let result = 0
-  if (char + n > 122) {
-    result = (char + n - 97) % 26
-  } else {
-    result = char + n - 97
+function toLowerCase(str) {
+  if (str.length < 1 || str.length > 100) return
+  // console.log('A'.charCodeAt()) // 65
+  // console.log('Z'.charCodeAt()) // 90
+  // console.log('a'.charCodeAt()) // 97
+  // console.log('z'.charCodeAt()) // 122
+  let result = ''
+  for (let i = 0; i < str.length; i++) {
+    if (str[i] >= 'A' && str[i] <= 'Z') {
+      result += String.fromCharCode(str[i].charCodeAt() + 32)
+    } else {
+      result += str[i]
+    }
   }
-  return result
+  console.log(result)
 }
