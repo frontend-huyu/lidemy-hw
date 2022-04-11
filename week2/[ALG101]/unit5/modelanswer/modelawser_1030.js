@@ -17,22 +17,21 @@ rl.on('close', function () {
 
 // write your solution in here, and remember lines is an array
 function solve(lines) {
-  let n = Number(lines[0])
-  if (n < 2 || n > 20) return
-
-  if (n === 2) console.log(2)
-  if (n === 3) console.log(3)
-
-  let counter = 0
-
-  if ((n - 1) % 2 === 0) {
-    counter = 2 * (n - 1) + 1
-  } else if ((n - 1) % 2 === 1) {
-    counter += 1
-    for (let i = 1; i < n - 3; i++) {
-      counter += (n - 1) - i
-    }
+  let str = lines[0]
+  if (reverse(str) === str) {
+    console.log('True')
+  } else {
+    console.log('False')
   }
-  console.log(counter)
+}
 
+solve(['abbbba'])
+solve(['ac'])
+
+function reverse(str) {
+  let result = ''
+  for (let i = str.length - 1; i >= 0; i--) {
+    result += str[i]
+  }
+  return result
 }

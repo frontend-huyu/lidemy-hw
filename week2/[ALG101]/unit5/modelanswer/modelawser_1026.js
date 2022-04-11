@@ -18,21 +18,22 @@ rl.on('close', function () {
 // write your solution in here, and remember lines is an array
 function solve(lines) {
   let n = Number(lines[0])
-  if (n < 2 || n > 20) return
+  let arr = lines[1].split(' ') // ['3', '9', '27']
+  if (isValid(arr)) {
+    console.log('Yes')
+  } else {
+    console.log('No')
+  }
+}
+solve(['3', '3 9 27'])
 
-  if (n === 2) console.log(2)
-  if (n === 3) console.log(3)
-
-  let counter = 0
-
-  if ((n - 1) % 2 === 0) {
-    counter = 2 * (n - 1) + 1
-  } else if ((n - 1) % 2 === 1) {
-    counter += 1
-    for (let i = 1; i < n - 3; i++) {
-      counter += (n - 1) - i
+function isValid(arr) {
+  // use / also can change type to number
+  let d = arr[1] / arr[0]
+  for (let i = 1; i < arr.length; i++) {
+    if (arr[i] / arr[i - 1] !== d) {
+      return false
     }
   }
-  console.log(counter)
-
+  return true
 }

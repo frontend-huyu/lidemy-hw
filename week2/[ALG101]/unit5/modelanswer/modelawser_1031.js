@@ -18,21 +18,20 @@ rl.on('close', function () {
 // write your solution in here, and remember lines is an array
 function solve(lines) {
   let n = Number(lines[0])
-  if (n < 2 || n > 20) return
+  let sum = 0
+  for (let i = 1; i <= n; i++) {
+    if (isSquare(i)) {
+      console.log(sum)
+      sum += i
 
-  if (n === 2) console.log(2)
-  if (n === 3) console.log(3)
-
-  let counter = 0
-
-  if ((n - 1) % 2 === 0) {
-    counter = 2 * (n - 1) + 1
-  } else if ((n - 1) % 2 === 1) {
-    counter += 1
-    for (let i = 1; i < n - 3; i++) {
-      counter += (n - 1) - i
     }
   }
-  console.log(counter)
+  console.log(sum)
+}
 
+solve(['30'])
+
+function isSquare(n) {
+  let r = Math.floor(Math.sqrt(n))
+  return r * r === n
 }

@@ -17,22 +17,24 @@ rl.on('close', function () {
 
 // write your solution in here, and remember lines is an array
 function solve(lines) {
-  let n = Number(lines[0])
-  if (n < 2 || n > 20) return
+  let temp = lines[0].split(' ')
+  // 19911117
 
-  if (n === 2) console.log(2)
-  if (n === 3) console.log(3)
-
-  let counter = 0
-
-  if ((n - 1) % 2 === 0) {
-    counter = 2 * (n - 1) + 1
-  } else if ((n - 1) % 2 === 1) {
-    counter += 1
-    for (let i = 1; i < n - 3; i++) {
-      counter += (n - 1) - i
-    }
+  let num = Number(temp[0] + temp[1] + temp[2])
+  let p = addDigits(num) // p: 29
+  while (p >= 10) {
+    p = addDigits(p)
   }
-  console.log(counter)
+  console.log(p)
+}
 
+solve(['1991 11 7'])
+
+function addDigits(n) {
+  let sum = 0
+  while (n != 0) {
+    sum += n % 10
+    n = Math.floor(n / 10)
+  }
+  return sum
 }
