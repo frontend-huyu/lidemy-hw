@@ -16,62 +16,64 @@ rl.on('close', function () {
 })
 
 // write your solution in here, and remember lines is an array
+// renew
 function solve(lines) {
   let n = Number(lines[0])
-  if (n < 2 || n > 100) return
+  let coordinateArr = []
 
-  let numArr = []
   for (let i = 1; i < lines.length; i++) {
-    numArr.push(lines[i].split(' ').map(str => Number(str)))
+    let temp = lines[i].split(' ')
+    coordinateArr.push({
+      x: Number(temp[0]),
+      y: Number(temp[1])
+    })
   }
+  // console.log(coordinateArr)
 
-  let distance = 0
-  let coordinates = []
-  let index = 0
-
-
-  for (let i = 0; i < numArr.length; i++) {
-    if (numArr[i][0] < -100 || numArr[i][0] > 100) {
-      console.log(numArr[i][0])
-      return
-    } else if (numArr[i][1] < -100 || numArr[i][1] > 100) {
-      console.log(numArr[i][1])
-      return
-    }
-  }
-
-  for (let i = 0; i < numArr.length; i += 2) {
-    let x = (numArr[i][0] - numArr[i + 1][0]) ** 2
-    let y = (numArr[i][1] - numArr[i + 1][1]) ** 2
-    distance = Math.sqrt(x + y).toFixed(2)
-    coordinates.push(Number(distance))
-  }
-
-  for (let i = 0; i < coordinates.length - 1; i++) {
-    if (coordinates[i] < coordinates[i + 1]) {
-      index = i
-    }
-  }
-
-  let first = numArr[2 * index]
-  let second = numArr[2 * index + 1]
-  compare(first, second)
+  compare(coordinateArr)
 }
 
-function compare(first, second) {
-  if (first[0] < second[0]) {
-    console.log(first[0], first[1])
-    console.log(second[0], second[1])
-  } else if (first[0] === second[0]) {
-    if (first[1] < second[1]) {
-      console.log(first[0], first[1])
-      console.log(second[0], second[1])
-    } else {
-      console.log(second[0], second[1])
-      console.log(first[0], first[1])
+function distance(x1, y1, x2, y2) {
+  return Math.sqrt(
+    (x1 - x2) ** 2 +
+    (y1 - y2) ** 2
+  )
+}
+
+function compare(arr) {
+  // compare({}), result = {} => undefined (invalid access)
+  let result = null
+  // min is a value to be renewed
+  let min = Infinity
+
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = i + 1; j < arr.length; j++) {
+      let temp = distance(arr[i].x, arr[i].y, arr[j].x, arr[j].y)
+      if (temp < min) {
+        min = temp
+        result = {
+          x1: arr[i].x,
+          y1: arr[i].y,
+          x2: arr[j].x,
+          y2: arr[j].y
+        }
+      }
     }
+  }
+
+  if (result.x1 < result.x2) {
+    console.log(result.x1 + ' ' + result.y1)
+    console.log(result.x2 + ' ' + result.y2)
+  } else if (result.x1 > result.x2) {
+    console.log(result.x2 + ' ' + result.y2)
+    console.log(result.x1 + ' ' + result.y1)
   } else {
-    console.log(second[0], second[1])
-    console.log(first[0], first[1])
+    if (result.y1 < result.y2) {
+      console.log(result.x1 + ' ' + result.y1)
+      console.log(result.x2 + ' ' + result.y2)
+    } else {
+      console.log(result.x2 + ' ' + result.y2)
+      console.log(result.x1 + ' ' + result.y1)
+    }
   }
 }
