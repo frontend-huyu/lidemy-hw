@@ -17,8 +17,15 @@ rl.on('close', function () {
 
 // write your solution in here, and remember lines is an array
 function solve(lines) {
-  let n = Number(lines[0])
-  if (n < 1 || n > 2 ** 30 - 1) return
-
-  console.log(parseInt(n, 9))
+  // console.log(lines[0].split('').reverse().join(''))
+  let str = lines[0]
+  let result = ''
+  for (let i = str.length - 1; i >= 0; i--) {
+    result += str[i]
+  }
+  console.log(result)
 }
+
+
+
+

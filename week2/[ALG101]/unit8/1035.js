@@ -19,20 +19,8 @@ rl.on('close', function () {
 function solve(lines) {
   const n = Number(lines[0])
   const numArr = lines.splice(1).map(str => Number(str))
-  if (n < 1 || n > 2e5) return
-  for (let i = 0; i < numArr.length; i++) {
-    if (numArr[i] < 1 || numArr[i] > 100) return
-  }
+  numArr.sort((a, b) => a - b)
   // console.log(numArr)
-
-  for (let i = 0; i < numArr.length; i++) {
-    for (let j = i + 1; j < numArr.length; j++) {
-      if (numArr[i] > numArr[j]) {
-        [numArr[i], numArr[j]] = [numArr[j], numArr[i]]
-      }
-    }
-  }
-
   for (let i = 0; i < numArr.length; i++) {
     console.log(numArr[i])
   }
