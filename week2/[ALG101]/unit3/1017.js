@@ -19,15 +19,12 @@ rl.on('close', function () {
 function solve(lines) {
   let c = Number(lines[0])
   let n = Number(lines[1])
-  if (c < 0 || c > 1000) return
-  if (n < 1 || n > 1000) return
 
   let arr = []
   for (let i = 2; i < lines.length; i++) {
     arr.push(Number(lines[i]))
   }
   // console.log(arr)
-
 
   for (let i = 0; i < arr.length; i++) {
     if (arr[i] < 1 || arr[i] > 10 ** 5) {

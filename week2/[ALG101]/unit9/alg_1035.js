@@ -17,18 +17,27 @@ rl.on('close', function () {
 
 // write your solution in here, and remember lines is an array
 function solve(lines) {
+  // faster: O(n log n) ex. sort(a,b)
+  // lower: O(n^2)
+
+  // counting sort
   let arr = []
-  for (let i = 1; i < lines.length; i++) {
-    arr.push(Number(lines[i]))
+  for (let i = 1; i <= 100; i++) {
+    arr[i] = 0
   }
-  // 3 5 (3-5=-2) => negative number: smaller to bigger
-  // 5 3 (5-3=2) => positive number: bigger to smaller
-  arr.sort(function (a, b) {
-    return a - b
-  })
-  for (let i = 0; i < arr.length; i++) {
-    console.log(arr[i])
+  // console.log(arr.length)
+  for (let i = 1; i < lines.length; i++) {
+    let n = Number(lines[i])
+    // console.log(n)
+    arr[n]++
+    // console.log(arr)
+  }
+
+  for (let i = 1; i <= 100; i++) {
+    for (let j = 1; j <= arr[i]; j++) {
+      console.log(i)
+    }
   }
 }
 
-solve(['5', '1', '7', '4', '9', '5'])
+solve(['5', '1', '7', '4', '4', '5'])

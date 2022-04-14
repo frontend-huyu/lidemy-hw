@@ -34,9 +34,22 @@ function solve(lines) {
 solve(['5 3', '1', '2', '3', '4', '5', '100', '3', '6'])
 
 function search(arr, q) {
-  for (let i = 0; i < arr.length; i++) {
-    if (arr[i] === q) {
-      return i
+  // left index and right index
+  let L = 0
+  let R = arr.length - 1
+
+  // [...........]
+  //  ^L   ^M   ^R
+  // [...........]
+  //  ^L^M^R
+  while (L <= R) {
+    let M = Math.floor((L + R) / 2)
+    if (arr[M] === q) {
+      return M
+    } else if (arr[M] > q) {
+      R = M - 1
+    } else {
+      L = M + 1
     }
   }
   return -1

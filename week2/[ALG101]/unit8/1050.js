@@ -32,11 +32,9 @@ function solve(lines) {
           j: j
         }
         if (index.i < index.j) {
-          console.log(index.i)
-          console.log(index.j)
+          console.log(index.i + ' ' + index.j)
         } else {
-          console.log(index.j)
-          console.log(index.i)
+          console.log(index.j + ' ' + index.i)
         }
         return
       }
