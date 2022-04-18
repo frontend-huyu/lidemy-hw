@@ -2,17 +2,17 @@
 // while (i <= 100) { // end condition
 //   console.log(i)
 //   //...
-//   i++ // iteration
+//   i++ // increment
 // }
 
-// for (start; end; iteration) {}
+// for (start; end; arithmetic operators) {}
 
 for (var i = 1; i <= 10; i++) {
   console.log(i)
 }
 
 for (var i = 1; i <= 10; i *= 2) {
-  if (i % 2) continue
+  if (i % 2) continue // even number % 2 = 0 (falsy value) => false
   console.log(i)
 }
 // 2

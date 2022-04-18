@@ -53,3 +53,10 @@ console.log(Math.random()) // random 0~0.9999.., inclusive of 0. but not 1
 console.log(Math.random() * 10) // random 0~9.9999...
 console.log(Math.random() * 10 + 1) // random 0~10.9999
 console.log(Math.floor(Math.random() * 10 + 1)) // random 0~10
+
+let x = 0.1
+let y = 0.2
+console.log(x + y) // 0.30000000000000004
+console.log(Number((x + y).toFixed(1)) === 0.3) // true
+
+console.log(Number.MAX_SAFE_INTEGER) // 9007199254740991 // 2^53 -1
