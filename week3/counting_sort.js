@@ -1,6 +1,18 @@
 function counting(arr) {
   let counter = []
-  for (let i = 1; i <= arr.length; i++) {
+  let head = Infinity
+  let length = -Infinity
+
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] < head) {
+      head = arr[i]
+    }
+    if (arr[i] > length) {
+      length = arr[i]
+    }
+  }
+
+  for (let i = head; i <= length; i++) {
     counter[i] = 0
   }
   // console.log(counter)

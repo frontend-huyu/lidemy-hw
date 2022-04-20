@@ -13,14 +13,9 @@ function flatArr(arr) {
   return newArr
 }
 
-function flatten(arr) {
-  flatArr(arr)
-  return newArr
-}
-
-// flatten([1, 2, 3])
-// flatten([1, 2, [1, 2], [1, 3], 6])
-flatten([1, [2, [3, [4]], 5], 6])
+// flatArr([1, 2, 3])
+// flatArr([1, 2, [1, 2], [1, 3], 6])
+flatArr([1, [2, [3, [4]], 5], 6])
 
 
 
