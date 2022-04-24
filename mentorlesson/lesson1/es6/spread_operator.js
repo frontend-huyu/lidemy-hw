@@ -1,5 +1,3 @@
-const { array } = require("yargs")
-
 const obj = {
   name: 'Peter',
   score: 60,
