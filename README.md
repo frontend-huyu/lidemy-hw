@@ -6,5 +6,5 @@
 -  week4 done on 2022.5
 
 
-#### other topic
+#### other topics
 -  [JavaScriptでのedge caseの勉強ノート](https://qiita.com/hu-yu/items/74c867b3de95ef59758a)
