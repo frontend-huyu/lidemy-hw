@@ -28,7 +28,8 @@ const obj = {
   age: 30,
   address: 'America',
   family: {
-    Father: 'Mick'
+    Father: 'Mick',
+    Mather: 'Mary'
   }
 }
 // let name = obj.name
@@ -50,8 +51,12 @@ const obj = {
 // console.log(family) // { father: 'Mick' }
 // let { father } = family
 // console.log(father) // Mick
-let { family: { Father } } = obj
+let { family: { Father, Mather } } = obj
 console.log(Father) // Mick
+console.log(Mather) // Mary
+console.log(family) // family is not defined
+
+// note: 'family' seems like a tree name, not a variable
 
 // note for Object corresponding
 const obj2 = {

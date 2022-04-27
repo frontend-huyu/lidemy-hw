@@ -3,9 +3,6 @@
 //   return str.repeat(times)
 // }
 
-const { objectMethod } = require("@babel/types")
-const { time } = require("console")
-
 // console.log(repeat('abc')) // *empty string*
 
 // if we don't give any value to parameters, it will be undefined
@@ -28,36 +25,36 @@ console.log(repeat2()) // hellohellohellohellohello
 
 
 // use with destructuring assignment
-// const obj = {
-//   b: 2
-// }
+const obj = {
+  b: 2
+}
 // const { a, b } = obj
 // console.log(a, b) // undefined 2
 
 // const { a = 123, b } = obj
 // console.log(a, b) // 123 2
 
-// const obj = {
-//   a: 1
-// }
-// const { a = 123, b = 'hello' } = obj
-// console.log(a, b) // 1 hello
+const obj1 = {
+  a: 1
+}
+const { a = 123, b = 'hello' } = obj1
+console.log(a, b) // 1 hello
 
 // note: when we use destructuring assignment which putted the default value inside, if the original object had value itself, it won't be changed.
 // note: default value only show up when it was undefined state
 
 
 // note: but you should be careful the original object didn't be changed
-const obj = {
-  b: 2
+const obj2 = {
+  d: 2
 }
-const { a = 123, b = 'hello' } = obj
-console.log(a, b) // 123 2
-console.log(obj) // { b: 2 }
-console.log(obj.a) // undefined
+const { c = 123, d = 'hello' } = obj2
+console.log(c, d) // 123 2
+console.log(obj2) // { d: 2 }
+console.log(obj2.c) // undefined
 /*
 if you try to access the default value, 
-it always undefined (for example, "a" didn't exist in obj),
-so default parameters only as a temporary value when we call.
-"a" didn't exist, and we didn't assign any value to "a".
+it is always undefined (for example, "c" didn't exist in obj2),
+so default parameters are only a temporary value when we call.
+"c" didn't exist, and we didn't assign any value to "c".
 */

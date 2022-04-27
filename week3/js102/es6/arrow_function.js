@@ -1,4 +1,4 @@
-//arrow function
+// arrow function
 // function test(n) {
 //   return n
 // }
@@ -12,9 +12,10 @@ const test = n => { // one parameter
 
 let arr = [1, 2, 3, 4, 5]
 // console.log(
-//   arr.filter(function (value) {
-//     return value > 1
-//   })
+//   arr
+//     .filter(function (value) {
+//       return value > 1
+//     })
 //     .map(function (value) {
 //       return value * 2
 //     })

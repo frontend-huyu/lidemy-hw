@@ -11,6 +11,7 @@ let arr3 = [1, 2, 3, 4, 5]
 let [first, ...rest] = arr3
 console.log(first) // 1
 console.log(rest) // [ 2, 3, 4, 5 ]
+console.log(arr3) // [ 1, 2, 3, 4, 5 ]
 // put the rest of elements in arr3 into variable "rest"
 
 // let [one, ...rest, last] = arr3
@@ -36,9 +37,11 @@ let obj4 = {
 }
 let { a, ...restObject } = obj4
 console.log(a, restObject) // 1 { b: 2, c: 3 }
+console.log(obj4) // { a: 1, b: 2, c: 3 }
 
 let { ...restAll } = obj4
 console.log(restAll) // { a: 1, b: 2, c: 3 }
+console.log(obj4)  // { a: 1, b: 2, c: 3 }
 
 // function
 function add(...args) { // args is array
@@ -51,5 +54,5 @@ function add(...args) { // args is array
 console.log(add(1, 2)) // 3
 /*
 note: "args" looks like arguments, the difference is
-arguments is an array-like object, then "args" is a real array
+arguments is an array-like object, then "...args" is a real array
 */

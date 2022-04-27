@@ -20,7 +20,7 @@ if (score1 >= 60) {
 
 // function scope? "if...else" is not function
 // it doesn't work
-if (score2 >= 60) { // 1. can not find "score", break out
+if (score2 >= 60) { // 1. can not find "score2", break out
   var score2 = 60
   console.log('pass')
 }

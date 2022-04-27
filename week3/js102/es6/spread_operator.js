@@ -3,18 +3,24 @@ let arr = [1, 2, 3]
 let arr2 = [4, 5, 6, arr]
 console.log(arr2) // [ 4, 5, 6, [ 1, 2, 3 ] ]
 
+// use spread operator
 let arr3 = [4, 5, 6, ...arr]
 console.log(arr3) // [ 4, 5, 6, 1, 2, 3 ]
 arr3 = [4, ...arr, 5, 6]
 console.log(arr3) // [ 4, 1, 2, 3, 5, 6 ]
 
 function add(a, b, c) {
+  // console.log(a)
+  // console.log(b)
+  // console.log(c)
   return a + b + c
 }
 console.log(add(arr)) // 1,2,3undefinedundefined
 // note: a = arr, b = undefined, c = undefined
 
 console.log(add(...arr)) // 6
+// console.log(add(...arr2)) // 15 // a = 4, b = 5, c = 6
+// console.log(add(...arr3)) // 7　// a = 4, b = 1, c = 2
 
 let obj1 = {
   a: 1,
@@ -101,3 +107,14 @@ let obj7 = {
 }
 console.log(obj6, obj7, obj6 === obj7)
 // { a: 1, b: 2 } { a: 1, b: 2 } false
+
+obj6 = {
+  a: 3,
+  b: 4
+}
+console.log(obj7) // { a: 1, b: 2 } // old address
+
+obj7 = {
+  ...obj6
+}
+console.log(obj7) // { a: 3, b: 4 }
