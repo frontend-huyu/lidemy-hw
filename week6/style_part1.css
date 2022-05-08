@@ -1,0 +1,216 @@
+/*'*': universal selector*/
+/* * {
+  color: red;
+  background-color: aqua;
+}
+
+div {
+  background: white;
+}
+
+body {
+  background: wheat;
+} */
+
+/* id & class */
+
+#div1 {
+  background: orange;
+}
+
+.bg-yellow {
+  background: yellow;
+}
+
+.text-green {
+  color: green;
+}
+
+span.bg-yellow {
+  background: gray;
+  color: blue;
+}
+
+.bg-grey.text-green {
+  background: grey;
+}
+
+/* '>': next level selector */
+.lv1 {
+  background: palegreen;
+}
+
+.lv1>div {
+  background: palevioletred;
+}
+
+.lv1>div>div {
+  background: palegoldenrod;
+}
+
+.lv1_demo2 .bg-red {
+  background: red;
+}
+
+.lv1_demo2>.bg-red {
+  background: aquamarine;
+}
+
+/* '+' & '~': the same level selector */
+
+.bg-blue+.bg-blue {
+  background: blue;
+}
+
+div~span {
+  background: peru;
+}
+
+.letterspacing~.letterspacing {
+  margin-left: 50px;
+}
+
+/* pseudo-classes : hover */
+/* https: //developer.mozilla.org/ja/docs/Web/CSS/Pseudo-classes */
+span.letterspacing:hover {
+  background: blueviolet;
+}
+
+/* nth-child */
+.wrapper div {
+  background: olive;
+}
+
+.wrapper div:first-child {
+  background: rgb(0, 119, 128);
+}
+
+.wrapper div:last-child {
+  background: rgb(0, 119, 128);
+}
+
+.wrapper div:nth-child(3) {
+  background: rgb(0, 119, 128);
+}
+
+.wrapper div:nth-child(even) {
+  background: rgb(212, 145, 57);
+}
+
+/* it doesn't work, because it select elements in order, in this case, the second element is
+<div>row2</div> */
+.wrapper2 .bg-olive:nth-child(2) {
+  background: olive;
+}
+
+/* also in this case */
+.wrapper2 .bg-olive:nth-child(even) {
+  background: olive;
+}
+
+/* odd is no problem */
+.wrapper2 .bg-olive:nth-child(odd) {
+  background: olive;
+}
+
+.wrapper2 .bg-olive:nth-child(2n-1) {
+  background: olive;
+}
+
+/* https: //developer.mozilla.org/ja/docs/Web/CSS/:nth-child */
+
+/* '::': pseudo-element */
+.wrapper2::before {
+  content: "$";
+  color: red;
+}
+
+.wrapper2::after {
+  content: "$";
+  color: red;
+}
+
+.wrapper3::after {
+  content: attr(data-symbol);
+  color: red;
+}
+
+/* the weighting */
+
+/* inherited from div.wrapper4 */
+.wrapper4 {
+  color: royalblue;
+}
+
+.item {
+  color: brown;
+}
+
+/* specified class => latter is greater */
+.item {
+  color: darkgrey;
+}
+
+/* there are other methods to specify class */
+/* it's greater than specified class */
+div.wrapper4>div.list>div.item {
+  color: chocolate;
+}
+
+/* specified id => always greatest */
+/* but the weighting of 'specified id' is still greatest */
+/* #pickme {
+  color: plum;
+} */
+
+/* note: id > class > tag */
+/* note: 0(id), 0(class/pseudo class/attribute), 0(tag) */
+
+/* 0, 3, 0 */
+.wrapper5 .test .weighting {
+  color: yellow;
+}
+
+/* 0, 2, 2 */
+div.wrapper5>div.test {
+  color: aqua;
+}
+
+/* 0, 2, 3 */
+div.wrapper5>div.test>.weighting {
+  color: violet;
+}
+
+/* 0, 2, 3 */
+div.wrapper5>.test>div.weighting {
+  color: skyblue
+}
+
+/* note: the same weighting case, latter is greater */
+
+
+/* 0, 3, 3 */
+div.wrapper5>div.test>div.weighting {
+  color: teal;
+}
+
+/* 1, 0, 0 */
+#only {
+  color: orchid
+}
+
+/* but inline style is the greatest => 1, 0, 0, 0*/
+/* check the css_demo.html */
+
+/* there is a way to solve the problem */
+/* !important => 1, 0, 0, 0, 0 */
+
+/* at least 0, 1, 0, under specified class */
+.weighting {
+  color: darkkhaki !important;
+}
+
+/* it doesn't work */
+/* div.wrapper5>div.test {
+  color: darkkhaki !important;
+} */

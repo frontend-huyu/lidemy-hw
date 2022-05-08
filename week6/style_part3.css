@@ -1,0 +1,45 @@
+body {
+  margin: 0;
+}
+
+#box1 {
+  /* box-sizing: content-box (default) */
+  /* border-box => tell browser to include any border, padding in specified box-size(element's width & height) */
+  box-sizing: border-box;
+  width: 200px;
+  height: 100px;
+  color: antiquewhite;
+  background: tomato;
+  border: 5px solid brown;
+  padding: 10px;
+}
+
+.box {
+  /* display: block (default) */
+
+  /* display: inline => depending on the default value, any height and width, margin-top or bottom value will have no effect */
+  /* ↑check again */
+
+  /* but margin's left&right and padding will */
+  display: inline;
+
+  /* display: inline-block => depending on width and height value */
+  /* margin and padding will affect element's box */
+  /*  */
+  /* display: inline-block; */
+
+  background: peachpuff;
+  width: 100px;
+  height: 100px;
+  margin: 10px 20px;
+  padding: 5px 10px;
+}
+
+/* note: <span>, <p>, <a>, <input>, <img> default style is display:inline-block */
+/* https: //htmlreference.io/ */
+
+/* note: remove inline-block elements spacing
+1. delete space from tag's ending to next one beginning
+
+2. use comment
+*/

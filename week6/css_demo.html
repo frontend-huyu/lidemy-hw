@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- third: include css file -->
+  <link rel="stylesheet" href="./style_demo.css">
+  <!-- note: the weighting is first(inline style), second, then third -->
+</head>
+
+<body>
+  <!-- (Deprecated) first(inline style): it will make HTML file more complicated -->
+  <div style="background: red;">hello</div>
+
+  <!-- (Deprecated) second: it also make the maintenance work more complicated -->
+  <style>
+    /* 
+    selector {
+      attribute: value;
+    } 
+    */
+    div {
+      background: blue;
+    }
+  </style>
+
+</body>
+
+</html>

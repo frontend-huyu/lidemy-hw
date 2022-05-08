@@ -1,0 +1,288 @@
+/* clear browser default setting */
+body {
+  margin: 0;
+}
+
+#box1 {
+  background: aquamarine;
+  border: 5px solid grey;
+
+  /* bds */
+  /* border-style: dotted; */
+  border-style: groove;
+
+  /* bdrs */
+  /* border => inner */
+  border-radius: 5px;
+
+  /* ol */
+  /* outline => outer */
+  outline: 5px solid mediumorchid;
+}
+
+#box2 {
+  background: rgba(162, 179, 101, 0.2);
+  /* border-radius: 20px; */
+  /* border-radius: 50px; */
+  /* border-radius: 50%; */
+
+  /* trapezoid */
+  /* width: 100px; */
+  /* height: 100px; */
+  /* border-top: 10px solid greenyellow;
+  border-right: 10px solid orange;
+  border-bottom: 10px solid rosybrown;
+  border-left: 10px solid slateblue; */
+
+  /* four equilateral triangle */
+  /* width: 0px;
+  height: 0px;
+  border-top: 100px solid greenyellow;
+  border-right: 100px solid orange;
+  border-bottom: 100px solid rosybrown;
+  border-left: 100px solid slateblue; */
+
+  /* one equilateral triangle */
+  background: transparent;
+  width: 0px;
+  height: 0px;
+  /* bdt, bdr, bdb, bdl */
+  border-top: 100px solid greenyellow;
+  border-right: 100px solid transparent;
+  border-bottom: 100px solid transparent;
+  border-left: 100px solid transparent;
+}
+
+/* img */
+/* no-repeat, x-axis or y-axis */
+#box3 {
+  background: url("./architecture-g752fbec98_640.jpg") no-repeat top right;
+  /* no-repeat center; */
+  /* <a href="https://pixabay.com/ja/users/miguelbarrera3-17639641/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=7139263">Miguel Barrera</a>による<a href="https://pixabay.com/ja/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=7139263">Pixabay</a>からの画像 */
+  height: 400px;
+  /* width: 1000px; */
+
+  /* bgsz */
+  /* background-size: 400px 300px; */
+  /* background-size: contain; */
+  background-size: cover;
+  /* background-size: inherit; */
+  /* background-size: 50% 50%; */
+}
+
+/* contain: as large as possible within its container without cropping or stretching the image */
+
+/* cover: the smallest possible size to fill the container (that is: both its height and width completely cover the container) */
+
+/* note: if specify height & width at the same time, it doesn't work, use contain or cover, you shouldn't specify height & width at the same time */
+
+
+/* padding & margin */
+/* padding => inner, margin => outer */
+#box4 {
+  background: indianred;
+  width: 100px;
+  height: 100px;
+
+  /* pd */
+  /* padding: 30px; */
+  padding: 20px 10px
+}
+
+#box5 {
+  /* bg */
+  background: steelblue;
+  width: 100px;
+  height: 100px;
+
+  /* mg */
+  /* margin: 30px; */
+  margin: 20px 10px;
+}
+
+#box6 {
+  background: slategray;
+  height: 100px;
+  color: rgba(243, 219, 219, 0.5);
+  /* fz */
+  font-size: 20px;
+  /* fw */
+  font-weight: normal;
+  /* fw:b */
+  font-weight: bold;
+  /* ff */
+  font-family: fantasy;
+  /* lts */
+  letter-spacing: 2px;
+  /* lh: corresponding font-size */
+  /* line-height: 5px; */
+  line-height: 1.5em;
+
+  /* ta:c */
+  text-align: center;
+}
+
+/* note: px => Absolute Units */
+/* note: em, rem, %, vh&vw => Relative Units */
+
+/* em: relative to the root elements's font-size, if root elements weren't specified, it will trace back to the body default value(16px) */
+
+/* rem: regard root element's font-size as one unit, if root element is 12px, 1.5rem = 18px */
+
+/* %: it also relative to root elements like em */
+
+/* vh(Viewport Height)&vw(Viewport Width): 1vh = Viewport Height * 0.01,
+ so 100vh = Viewport Height, 'vw' as well */
+
+
+
+#box7 {
+  background: blanchedalmond;
+  width: 200px;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+
+  /* wob:ba */
+  /* break-all: take the word apart, when it over the width */
+  /* it won't cause words overflow => overflow doesn't work */
+  word-break: break-all;
+
+  /* wob:k */
+  /* keep-all: it will retain words completely, if its length over the tag width, it won't be wrapped */
+  /* it will cause words overflow */
+  word-break: keep-all;
+
+  /* Deprecated */
+  /* it has the same effect as word-break: normal and overflow-wrap: anywhere, regardless of the actual value of the overflow-wrap property */
+  word-break: break-word;
+
+  /* whs:nw */
+  white-space: nowrap;
+
+}
+
+/* 
+note: 
+word-break => word's break point 
+overflow-wrap => break lines (for IE?)
+white-space => whether sequences of white space are preserved & break lines or not 
+*/
+
+#box8 {
+  background: darkgreen;
+  /* height: 50px; */
+  width: 200px;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+
+  /* whs:nw */
+  /* collapse white space, do not make text wrapping */
+  white-space: nowrap;
+
+  /* ov */
+  /* overflow: hidden; */
+
+  /* ovx, ovx:s */
+  /* overflow-x: hidden; */
+  /* overflow-x: scroll; */
+
+  /* ovy, ovy:s */
+  /* overflow-y: hidden; */
+  /* overflow-y: scroll; */
+
+  /* ov:a */
+  overflow: auto;
+
+  /* tov:e */
+  /* often use with 'white-space: nowrap' */
+  text-overflow: ellipsis;
+}
+
+#button {
+  /* bgc */
+  background-color: orange;
+  width: 100px;
+  height: 50px;
+
+  border-radius: 20px;
+  text-align: center;
+  line-height: 50px;
+
+  /* trs */
+  /* beware of performance */
+  transition: all 0.5s ease-in;
+  /* transition: background-color 1s; */
+}
+
+#button:hover {
+  background-color: silver;
+  color: white;
+
+  /* cur:p */
+  cursor: pointer;
+}
+
+#transformbox {
+  width: 200px;
+  height: 100px;
+  border-radius: 30px;
+  text-align: center;
+  line-height: 100px;
+  color: brown;
+  background: palegreen;
+
+  /* trf:sc */
+  /* transform: scale(2); */
+  /* transform: scale(1.5, 1.2); */
+
+  transition: width 0.5s, height 0.5s, background-color 1s, color 0.5s, transform 1s;
+  /* transition: ; */
+}
+
+#transformbox:hover {
+  width: 50%;
+  height: 50%;
+  background-color: lightgray;
+  color: azure;
+  /* transform: scale(1.5); */
+  /* transform: rotate(20deg); */
+  /* transform: rotate(360deg); */
+
+  /* trf:tx */
+  /* transform: translateX(50px); */
+
+  /* trf:t */
+  transform: translate(50px, -20px);
+}
+
+/* it's a 3D model for text? */
+#transformbox3D {
+  width: 80px;
+  height: 80px;
+  background-color: skyblue;
+}
+
+.scaled {
+  transform: scale3d(2, 0.7, 0.2);
+  background-color: pink;
+}
+
+#position {
+  width: 200px;
+  height: 100px;
+  border-radius: 30px;
+  text-align: center;
+  line-height: 100px;
+  color: lightgray;
+  background-color: slategray;
+
+  /* bottom: 0px;
+  position: relative; */
+
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+}

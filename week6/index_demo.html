@@ -1,0 +1,227 @@
+<!-- <!DOCTYPE html>: use the latest version -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- use UTF-8 encoding system to translate Unicode character -->
+  <meta charset="UTF-8">
+  <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!-- SEO: title > meta description -->
+  <meta name="description" content="">
+  <!-- common keywords, it won't be caught by SEO anymore -->
+  <meta name="keyword" content="">
+
+  <!-- The Open Graph protocol for Facebook SEO, https://ogp.me/ -->
+  <!-- <meta og:Tag> -->
+  <!-- https://developers.facebook.com/tools/debug/ -->
+  <meta property="og">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <!-- SEO for google -->
+  <!-- JSON-LD: JavaScript Object Notation for Linked Data -->
+  <!-- https://json-ld.org/ -->
+  <!-- schema.org, Schema.org vocabulary can be used with many different encodings -->
+  <!-- google structured data test tool, https://developers.google.com/search/docs/advanced/structured-data#url=https%3A%2F%2Fwww.cakeresume.com%2Fcompanies%2Fsw168-info%2Fjobs%2Fsenior-website-front-end-development-engineer%3Flocale%3Dzh-TW%26utm_campaign%3Dgoogle_jobs_apply%26utm_source%3Dgoogle_jobs_apply%26utm_medium%3Dorganic -->
+  <script type="application/ld+json">
+    // example for JSON-LD
+    {
+      "@context": "http://schema.org",
+      "@type": "WebSite",
+      "url": "http://website.com",
+      "name": "wbs",
+      "description": "Web Studio"
+      "aggregateRating": {
+        "@type": "aggregateRating",
+        "ratingValue": "4.5",
+        "reviewCount": "4096"
+      }
+    }
+  </script>
+  <!-- others for SEO -->
+  <!-- robots.txt: information for robots, like sitemap, allow ,or disallow  -->
+
+  <!-- tell SEO those sites also the alternative page for itself, so SEO will aggregate score -->
+  <link rel="alternative" hreflang="en" href="">
+
+  <!-- connect users to app store link -->
+  <meta property="al:ios:app_name" content="name">
+  <meta property="al:ios:app_store_id" content="id">
+
+  <meta property="twitter:app:id:ipad" name="twitter:app:id:ipad" content="id">
+  <meta property="twitter:app:id:iphone" name="twitter:app:id:iphone" content="id">
+  <meta property="twitter:app:url:ipad" name="twitter:app:url:ipad" content="website.com">
+  <meta property="twitter:app:url:iphone" name="twitter:app:url:iphone" content="website.com">
+  <!-- note: bot detection -->
+
+</head>
+
+<!-- note for escape -->
+<!-- '&' => &amp; '<' => &lt; '>' => &gt; '"' => &quot; -->
+<!-- amp: ampersand, lt: less than, gt: greater than, quot:quotation -->
+<!-- http://www.ne.jp/asahi/minazuki/bakera/html/reference/charref -->
+
+<!-- Semantic elements -->
+<!-- https://developer.mozilla.org/en-US/docs/Glossary/Semantics -->
+<!-- https://www.w3schools.com/html/html5_semantic_elements.asp -->
+
+<body>
+  <!-- the dominant content of the body -->
+  <main>
+
+    <nav>
+      <!-- navigation: provide navigation links -->
+    </nav>
+
+    <!-- division -->
+    <div>
+      <!-- span -->
+      <span></span>
+
+      <!-- image -->
+      <img src="" title="" alt="">
+
+      <!-- ul: unordered list(-), ol: ordered list(1234), li: list item -->
+      <ul>
+        <li></li>
+      </ul>
+
+      <ol>
+        <li></li>
+      </ol>
+
+      <!-- pre: preformatted text, br: line break -->
+      <pre></pre>
+      <br>
+      <br />
+
+      <!-- table tr: table row, td: table cell, th: table header -->
+      <table>
+        <tr>
+          <th>name</th>
+          <th>score1</th>
+          <th>score2</th>
+        </tr>
+        <tr>
+          <td>Mick</td>
+          <td>50</td>
+          <td>75</td>
+        </tr>
+      </table>
+    </div>
+
+    <div>
+      <!-- a: anchor, href: hypertext reference -->
+      <a href="https://google.com">take me to google</a><br>
+      <!-- connect google with current page -->
+      <a href="https://google.com" target="_self">take me to google</a><br>
+      <!-- connect google with new page -->
+      <a href="https://google.com" target="_blank">take me to google</a>
+    </div>
+
+    <div>
+      <!-- frameborder: specify whether or not to display a border around a frame -->
+      <iframe src="https://google.com" frameborder="0" width="100%" height="400px"></iframe>
+      <!-- 'X-frame-Options' to 'sameorigin' -->
+    </div>
+
+    <div>
+      <!-- input, text: return string, password, email, date, radio, checkbox -->
+      <form action="">
+        <!-- https://developer.mozilla.org/ja/docs/Web/HTML/Element/input -->
+        <div>
+          Name:<input type="text" />
+        </div>
+        <div>
+          password:<input type="password" />
+        </div>
+        <div>
+          email:<input type="email" />
+        </div>
+        <div>
+          date:<input type="date" />
+        </div>
+        <div>
+          gender:
+          <input type="radio" name="gender" id="male" /><label for="male">male</label>
+          <input type="radio" name="gender" id="female" /><label for="female">female</label>
+          <input type="radio" name="gender" id="other" /><label for="other">other</label>
+        </div>
+
+        <div>
+          habit:
+          <input type="checkbox" id="sports" /><label for="sports">sports</label>
+          <input type="checkbox" id="reading" /><label for="reading">reading</label>
+          <input type="checkbox" id="music" /><label for="music">music</label>
+          <input type="checkbox" id="dance" /><label for="dance">dance</label>
+          <input type="checkbox" id="painting" /><label for="painting">painting</label>
+        </div>
+
+        <div>
+          <input type="submit" value="apply" />
+        </div>
+
+      </form>
+    </div>
+
+    <div>
+      <a href="#demo3">take me to demo three</a>
+      <h1 id="demo1">demo one</h1>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+        magna
+        aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat. Duis
+        aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+        occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+        magna
+        aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat. Duis
+        aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+        occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
+
+      <h1 id="demo2">demo two</h1>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+        magna
+        aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat. Duis
+        aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+        occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+        magna
+        aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat. Duis
+        aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+        occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
+
+      <h1 id="demo3">demo three</h1>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+        magna
+        aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat. Duis
+        aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+        occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+        magna
+        aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat. Duis
+        aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+        occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
+      <a href="#demo1">take me to demo one</a>
+    </div>
+  </main>
+
+  <!-- footer -->
+  <footer>
+    <!-- typically contains information about the author of the section, copyright data or links to related documents -->
+  </footer>
+</body>
+
+</html>
