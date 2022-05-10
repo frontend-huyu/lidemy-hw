@@ -1,0 +1,149 @@
+/* https: //flukeout.github.io/ */
+/* lv1 */
+* {}
+
+plate {}
+
+/* lv2 */
+bento {}
+
+:not(plate) {}
+
+/* lv3 */
+#fancy {}
+
+plate:first-child {}
+
+plate:nth-child(1) {}
+
+/* lv4 */
+plate apple {}
+
+plate>apple {}
+
+*>* {}
+
+/* lv5 */
+#fancy pickle {}
+
+#fancy>pickle {}
+
+/* lv6 */
+.small {}
+
+/* lv7 */
+orange.small {}
+
+.small:not(apple) {}
+
+/* lv8 */
+bento orange.small {}
+
+/* lv9 */
+plate,
+bento {}
+
+/* lv10 */
+* {}
+
+/* lv11 */
+plate>orange,
+plate>pickle,
+plate>apple {}
+
+orange.small,
+pickle,
+plate>apple {}
+
+/* lv12 */
+plate+apple {}
+
+/* lv13 */
+bento~pickle {}
+
+/* lv14 */
+plate>apple {}
+
+/* lv15 */
+orange:first-child {}
+
+/* lv16 */
+plate>apple,
+plate>pickle {}
+
+/* lv17 */
+#fancy apple.small,
+pickle.small {}
+
+plate#fancy apple.small,
+pickle:last-child {}
+
+/* lv18 */
+plate:nth-child(3) {}
+
+/* lv19 */
+bento:nth-child(2) {}
+
+/* counting backwards from the last one */
+bento:nth-last-child(3) {}
+
+
+/* lv20 */
+apple:nth-child(2) {}
+
+/* Selects any <p> that is the first element
+   of its type among its siblings */
+apple:first-of-type {}
+
+/* lv21 */
+plate:nth-child(2n) {}
+
+plate:nth-of-type(2n) {}
+
+/* lv22 */
+
+/* n=0 => 3, n=1 => 5 */
+plate:nth-of-type(2n+3) {}
+
+/* lv23 */
+/* with no siblings of the same type */
+apple.small:only-of-type {}
+
+/* lv24 */
+orange:last-of-type,
+apple:last-of-type {}
+
+/* lv25 */
+bento:empty {}
+
+/* lv26 */
+apple:not(.small) {}
+
+/* lv27 */
+[for] {}
+
+/* lv28 */
+plate[for] {}
+
+/* lv29 */
+bento[for]:not([for="Albina"]) {}
+
+[for="Vitaly"] {}
+
+/* lv30 */
+/* https: //www.w3.org/TR/selectors-3/#attribute-substrings */
+/* [att^=val] => value begins with the prefix "val" */
+[for^="S"] {}
+
+/* note: 
+[att$=val] => value ends with the suffix "val"
+[att*=val] => value contains at least one instance of the substring "val"
+*/
+
+/* lv31 */
+[for$="ato"] {}
+
+[for$="o"] {}
+
+/* lv32 */
+[for*="obb"] {}

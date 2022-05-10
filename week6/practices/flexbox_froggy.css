@@ -1,0 +1,213 @@
+/* http: //flexboxfroggy.com/#ja */
+
+
+#pond {
+  /* d:f */
+  display: flex;
+
+  /* fxd */
+  /* flex-direction: row (default) */
+
+  /* jc */
+  /* justify-content => main axis */
+
+  /* note for justify-content: 
+  flex-start: content items toward left
+  flex-end: content items toward right
+  center: along the main axis
+
+  space-between: evenly distributed, along the main axis
+  space-around: evenly distributed, along the main axis, empty space around both sides of item
+
+  */
+}
+
+/* flex-direction */
+/* lv1 */
+/* justify-content: flex-end */
+
+/* lv2 */
+/* justify-content: center */
+
+/* lv3 */
+/* justify-content: space-around */
+
+/* lv4 */
+/* justify-content: space-between */
+
+
+#pond {
+  display: flex;
+
+  /* ai */
+  /* align-items: column (default, cross axis) */
+
+  /* note for align-items: 
+  flex-start: content items toward top
+  flex-end: content items toward bottom
+  center: along the cross axis
+
+  baseline: align the baseline defined by the cross axis 
+  stretch: be stretched such that the cross-size of the item's margin box
+  */
+}
+
+/* align-items */
+/* lv5 */
+/* align-items: flex-end */
+
+/* lv6 */
+/* justify-content: center;
+align-items: center; */
+
+/* lv7 */
+/* justify-content: space-around;
+align-items: flex-end; */
+
+
+#pond {
+  display: flex;
+
+  /* fxd */
+  /* flex-direction: row (default) (define main axis) */
+
+  /* note for flex-direction: 
+  row: from left to right →
+  row-reverse: from right to left ←
+  column: from top to bottom ↓
+  column-reverse: from bottom to top ↑
+
+  */
+}
+
+/* flex-direction */
+/* lv8 */
+/* flex-direction: row-reverse */
+
+/* lv9 */
+/* flex-direction: column */
+
+/* lv10 */
+/* flex-direction: row-reverse;
+justify-content: flex-end; */
+
+/* lv11 */
+/* flex-direction: column;
+justify-content: flex-end; */
+
+/* lv12 */
+/* flex-direction: column-reverse;
+justify-content: space-between; */
+
+/* lv13 */
+/* flex-direction: row-reverse;
+justify-content: center;
+align-items: flex-end; */
+
+
+/* order */
+/* lv14 */
+/* .yellow {
+  order: 1;
+} */
+
+/* lv15 */
+/* .red {
+  order: -1;
+} */
+/* note: if we don't specify order, it will be 0,
+in this case, those green froggy are order: 0 */
+
+
+/* as */
+/* align-self */
+/* lv16 */
+/* .yellow {
+  align-self: flex-end
+} */
+
+/* lv17 */
+/* .yellow {
+  order: 1;
+  align-self: flex-end;
+} */
+
+
+#pond {
+  display: flex;
+
+  /* fxw */
+  /* flex-wrap: nowrap (default) */
+
+  /* note for flex-wrap:
+  nowrap: along main axis, from start to end
+  wrap: along main axis, from top to bottom
+  wrap-reverse: along main axis, from bottom to top
+  */
+
+}
+
+/* flex-wrap */
+/* lv18 */
+/* flex-wrap: wrap; */
+
+/* lv19 */
+/* flex-direction: column;
+flex-wrap: wrap; */
+
+/* fxf */
+/* flex-direction + flex-wrap => flex-flow */
+/* lv20 */
+/* flex-flow: column wrap; */
+
+
+#pond {
+  display: flex;
+  flex-wrap: wrap;
+
+  /* ac */
+  /* align-content: stretch (default) */
+
+  /* note for align-content: 
+  flex-start: against the start edge
+  flex-end: against the end edge
+  center: in the center along the cross axis
+  space-between: evenly distributed along the cross axis
+  space-around: evenly distributed along the cross axis, empty space around both sides of content
+  stretch: auto-sized increased equally, along the cross axis
+  */
+}
+
+/* lv21 */
+/* align-content: flex-start; */
+
+/* lv22 */
+/* align-content: flex-end; */
+
+/* lv23 */
+/* flex-direction: column-reverse;
+align-content: center; */
+
+/* lv24 */
+/* flex-flow: column-reverse wrap-reverse;
+align-content: space-between;
+justify-content: center; */
+
+
+/* note for flex-basis: 
+
+
+
+*/
+
+/* note for flex-grow: 
+
+
+
+*/
+
+/* note for flex-shrink: 
+
+
+
+*/
