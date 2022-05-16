@@ -1,0 +1,38 @@
+/* 27. X:last-child */
+/* ul {
+  width: 200px;
+  background: #292929;
+  color: white;
+  list-style: none;
+  padding-left: 0;
+}
+
+li {
+  padding: 10px;
+  border-bottom: 1px solid black;
+  border-top: 1px solid #3c3c3c;
+} */
+
+/* The only problem,
+as shown in the image above,
+is that a border will be applied to the very top and bottom of the unordered list—which looks odd. Let's use the :first-child and :last-child pseudo classes to fix this. */
+
+/* li:first-child {
+  border-top: none;
+}
+
+li:last-child {
+  border-bottom: none;
+} */
+
+/* 28. X:only-child */
+
+div p:only-child {
+  color: red;
+}
+
+/* 29. X:only-of-type */
+ul>li:only-of-type {
+  font-weight: bold;
+  color: red;
+}
