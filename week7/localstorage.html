@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="app">
+    <input type="text" class="text" />
+    <button>store</button>
+  </div>
+  <script>
+    const preValue = window.localStorage.getItem('text')
+    document.querySelector('input').value = preValue
+
+    document.querySelector('button').addEventListener('click', () => {
+      const value = document.querySelector('.text').value
+      window.localStorage.setItem('text', value)
+    })
+    // note: JSON.parse() / JSON.stringify
+  </script>
+</body>
+
+</html>

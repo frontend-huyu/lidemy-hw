@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="app">
+    <button class="add-btn">Add contact person </button>
+  </div>
+  <div class="contacts">
+    <div class="row">
+      Name: <input name="name" />
+      Phone: <input name="phone" />
+      <button class="delete">Delete</button>
+    </div>
+  </div>
+  <script>
+    document.querySelector('.add-btn').addEventListener('click', () => {
+      const div = document.createElement('div')
+      div.classList.add('row')
+      div.innerHTML = `
+      Name: <input name="name" />
+      Phone: <input name="phone" />
+      <button class="delete">Delete</button>`
+      document.querySelector('.contacts').appendChild(div)
+    })
+
+    document.querySelector('.contacts').addEventListener('click', (e) => {
+      // if (e.target.classList.contains('delete')) {
+      //   document.querySelector('.contacts').removeChild(e.target.closest('.row'))
+      // }
+
+      if (e.target.classList.contains('delete')) {
+        let deleteRow = e.target.parentElement
+        deleteRow.remove()
+      }
+    })
+  </script>
+</body>
+
+</html>
