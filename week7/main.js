@@ -180,5 +180,162 @@ btn.addEventListener('click', () => {
 })
 
 
+// Count the number of characters of a textarea
+const story = document.getElementById('story')
+const counter = document.getElementById('counter')
+// const counter = document.querySelector('#counter')
+
+story.addEventListener('input', (e) => {
+  target = e.target
+
+  const maxLength = target.getAttribute('maxLength')
+
+  const currentLength = target.value.length;
+
+  counter.textContent = `${currentLength}/${maxLength}`
+})
 
 
+// Create an element
+// Create new text node
+function addTextNode(text) {
+  const createText = document.createTextNode(text)
+  div.appendChild(createText)
+}
+btn.addEventListener('click', () => {
+  addTextNode('new text node')
+})
+
+
+// Detect clicks outside of an element
+document.addEventListener('click', (e) => {
+  const isClickedOutside = !btn.contains(e.target)
+  if (isClickedOutside) {
+    console.log('outside')
+  } else {
+    console.log('inside')
+  }
+})
+
+
+// Detect if an element is focused
+const hasFocus = document.activeElement
+if (div === hasFocus) {
+  console.log('focused')
+} else {
+  console.log('Not focused')
+}
+// Not focused
+
+
+// Detect internet explorer browser
+const isIe = function () {
+  const ua = window.navigator.userAgent
+  return ua.indexOf('MSIE') > -1 || ua.indexOf('Trident') > -1
+  // note: IE 8 = Trident/4.0; IE 11 = Trident/7.0
+}
+// The documentMode property is deprecated. Do NOT use it.
+// The documentMode only works in Internet Explorer.
+// All other browsers return undefined.
+const isIE = !!document.documentMode
+// note: ! => cast to a boolean, so !! => truthy boolean
+// note: all browsers return undefined, so it will be false expected IE
+
+// const isIE = Boolean(document.documentMode)
+console.log(isIE) // false
+
+
+// Detect mac OS browser
+// console.log(navigator.platform)
+const isMacBrowser = /Mac|iPad|iPhone|iPad/.test(navigator.platform)
+
+console.log(isMacBrowser) // false
+//
+// function iOS() {
+//   return [
+//     'iPad Simulator',
+//     'iPhone Simulator',
+//     'iPod Simulator',
+//     'iPad',
+//     'iPhone',
+//     'iPod'
+//   ].includes(navigator.platform)
+//     // iPad on iOS 13 detection
+//     || (navigator.userAgent.includes('Mac') && 'ontouchend' in document)
+// }
+// console.log(iOS()) // false
+
+
+// Detect mobile browsers
+// 1. Check userAgent(not recomended)
+// console.log(navigator.userAgent)
+// const isMobile = /Android|BlackBerry|iPad|iPod|iPhone|webOS/i.test(navigator.userAgent);
+// I don't recommend this approach because the server can send a fake user agent.
+// 2. Use feature detection
+const isMobile = function () {
+  const match = window.matchMedia('(pointer:coarse)')
+  return match && match.matches
+}
+// console.log(window.matchMedia('(min-width: 1440px)'))
+// note: matches is property
+// note: We can't rely on the screen size because the mobile devices are getting bigger.
+
+// another agenda: about hover
+console.log(window.matchMedia('(any-pointer: coarse)').matches) // false
+
+
+// Detect the dark mode
+const isDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+console.log(isDarkMode) // false
+
+// Determine the height and width of an element
+function determineSize(ele) {
+  const styles = window.getComputedStyle(ele)
+  // The size without padding and border
+  const height = ele.clientHeight - parseFloat(styles.paddingTop) - parseFloat(styles.paddingBottom)
+  const width = ele.clientWidth - parseFloat(styles.paddingLeft) - parseFloat(styles.paddingRight)
+  // return `${height}, ${width}`
+
+  // The size include padding
+  const clientHeight = ele.clientHeight
+  const clientWidth = ele.clientWidth
+
+  // The size include paading and border
+  const offsetHeight = ele.offsetHeight
+  const offsetWidth = ele.offsetWidth
+
+  // The size include padding, border and margin
+  const heightWithMargin = ele.offsetHeight + parseFloat(styles.marginTop) + parseFloat(styles.marginBottom)
+  const widthWithMargin = ele.offsetWidth + parseFloat(styles.marginLeft) + parseFloat(styles.marginRight)
+
+}
+console.log(determineSize(div))
+console.log(determineSize(btn))
+
+
+// Distinguish between left and right mouse clicks
+p.addEventListener('mousedown', (e) => {
+  console.log(e.button)
+  // e.button === 0: the left button is clicked
+  // e.button === 1: the middle button is clicked
+  // e.button === 2: the right button is clicked
+  // e.button === 3: the `Browser Back` button is clicked
+  // e.button === 4: the `Browser Forward` button is clicked
+})
+
+
+// Execute code when the document is ready
+const ready = function (cb) {
+  // check if the 'document' is loaded completely
+  // note: loading/interactive/complete
+  document.readyState === 'loading'
+    ? document.addEventListener('DOMContentLoaded', (e) => {
+      cb()
+    })
+    : cd()
+}
+// usage
+ready(function () {
+  // Do something when the document is ready
+  console.log('It is ready!')
+})
