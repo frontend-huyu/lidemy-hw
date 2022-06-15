@@ -339,3 +339,84 @@ ready(function () {
   // Do something when the document is ready
   console.log('It is ready!')
 })
+
+
+// Get CSS styles of an element
+const styles = window.getComputedStyle(div, null)
+let bgColor = styles.backgroundColor
+// For the style that has a vendor prefix which starts with a hyphen (-), we can get the style value by passing the style:
+const textSizeAdjust = styles['-webkit-text-size-adjust']
+// The getPropertyValue method produces the same result:
+// bgColor = styles.getPropertyValue('background-color')
+
+console.log(bgColor + ', ' + textSizeAdjust) // rgba(0, 0, 0, 0), auto
+
+
+// Get or set the document title
+const title = document.title
+console.log(title)
+
+
+// Get or set the HTML of an element
+const contentOfDiv = div.innerHTML
+// console.log(contentOfDiv)
+// div.innerHTML = '<h1>A replacement</h1>'
+
+
+// Get, set and remove attributes
+const anchor = document.querySelector('a')
+const linkTitle = anchor.getAttribute('title')
+console.log(linkTitle)
+anchor.removeAttribute('title')
+console.log(anchor.removeAttribute('title')) // undefined
+// Set the attribute's value
+story.setAttribute('style', 'width: 300px; height: 150px')
+
+
+// Get, set and remove data attributes
+// Set the data attribute's value
+p.setAttribute('data-agenda', '1')
+// or
+p.dataset.agenda = '1'
+
+// Get the data attribute's value
+const agendaId = p.getAttribute('data-agenda')
+console.log(agendaId) // 1
+// or
+const agenda = p.dataset.agenda
+console.log(agenda) // 1
+
+p.removeAttribute('data-agenda')
+// or
+delete p.dataset.agenda
+// Note that calling delete ele.dataset doesn't remove all data attributes.
+
+
+// Get siblings of an element
+const preSibling = p.previousSibling
+console.log(preSibling)
+const nextSibling = p.nextSibling
+console.log(nextSibling)
+// Get all siblings
+const parent = p.parentNode
+const siblings = [].slice.call(parent.children).filter((child) => {
+  return child !== p
+})
+console.log(parent)
+console.log(siblings)
+//
+// const siblings = Array.from(parent.children)
+// console.log(siblings.filter((child) => child !== p))
+
+
+// small test for this
+btn.addEventListener('click', eventHandler)
+function eventHandler() {
+  this.disabled = true
+
+  setTimeout(() => {
+    this.disabled = false
+    console.log(this)
+  }, 3000)
+}
+
