@@ -332,7 +332,7 @@ const ready = function (cb) {
     ? document.addEventListener('DOMContentLoaded', (e) => {
       cb()
     })
-    : cd()
+    : cb()
 }
 // usage
 ready(function () {
@@ -419,4 +419,10 @@ function eventHandler() {
     console.log(this)
   }, 3000)
 }
+
+const nodeList = document.querySelector('.container')
+const htmlCollection = document.getElementsByClassName('container')
+console.log(nodeList)
+console.log(htmlCollection)
+
 
