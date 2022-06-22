@@ -1,5 +1,3 @@
-const btn = document.querySelector('.btn')
-
 // freeze btn 3s
 // btn.addEventListener('click', eventHandler)
 
@@ -153,21 +151,21 @@ const btn = document.querySelector('.btn')
 // myObject.myMethod()
 
 // example6
-// const myObject = {
-//   a: 1,
-//   myMethod: function () {
-//     console.log(this) // {a: 1, myMethod: ƒ}
-//     btn.addEventListener('click', function () {
-//       this.disabled = true
-//       console.log(this) // <button class="btn" disabled>Add New Column</button>
+const myObject = {
+  a: 1,
+  myMethod: function () {
+    console.log(this) // {a: 1, myMethod: ƒ}
+    btn.addEventListener('click', function () {
+      this.disabled = true
+      console.log(this) // <button class="btn" disabled>Add New Column</button>
 
-//       setTimeout(() => {
-//         this.disabled = false
-//         console.log(this) // <button class="btn">Add New Column</button>
-//       }, 3000)
-//       console.log(this) // <button class="btn" disabled>Add New Column</button>
-//     })
-//   },
-// }
+      setTimeout(function () {
+        this.disabled = false
+        console.log(this) // <button class="btn">Add New Column</button>
+      }, 3000)
+      console.log(this) // <button class="btn" disabled>Add New Column</button>
+    })
+  },
+}
 
-// myObject.myMethod()
+myObject.myMethod()

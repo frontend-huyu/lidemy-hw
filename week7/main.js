@@ -409,20 +409,215 @@ console.log(siblings)
 // console.log(siblings.filter((child) => child !== p))
 
 
-// small test for this
-btn.addEventListener('click', eventHandler)
-function eventHandler() {
-  this.disabled = true
+// Get size of the selected file
+// const fileElement = document.getElementById('upload')
+// const sizeElement = document.getElementById('size')
 
-  setTimeout(() => {
-    this.disabled = false
-    console.log(this)
-  }, 3000)
+// fileElement.addEventListener('change', function (e) {
+//   const files = e.target.files
+//   console.log(files)
+//   if (files.length === 0) {
+//     sizeElement.innerHTML = ''
+//     sizeElement.style.display = 'none'
+//   } else {
+//     // sizeElement.innerHTML = `${files[0].size}`
+
+//     // Display a readable size
+//     const formatFileSize = function (bytes) {
+//       const suffixes = ['B', 'kB', 'MB', 'GB', 'TB']
+//       const i = Math.floor(Math.log(bytes) / Math.log(1024))
+//       // console.log(i)
+//       // console.log(bytes / Math.pow(1024, i).toFixed(2))
+//       // bytes = 0, i => -Infinity
+//       if (bytes === 0) return '0 B'
+//       return `${bytes / Math.pow(1024, i).toFixed(2)} ${suffixes[i]}`
+//     }
+//     sizeElement.innerHTML = formatFileSize(files[0].size)
+//     sizeElement.style.display = 'block'
+//   }
+// })
+
+// Demo
+document.addEventListener('DOMContentLoaded', function () {
+  const fileElement = document.getElementById('upload')
+  const sizeElement = document.getElementById('size')
+
+  // covert the file size
+  const formatFileSize = function (bytes) {
+    const suffixes = ['B', 'kB', 'MB', 'GB', 'TB']
+    const i = Math.floor(Math.log(bytes) / Math.log(1024))
+    if (bytes === 0) {
+      fileElement.value = ''
+      return '0 B'
+    }
+    return `${(bytes / Math.pow(1024, i)).toFixed(2)} ${suffixes[i]}`
+  }
+
+  // clear input
+  const clear = function () {
+    fileElement.value = ''
+    sizeElement.innerHTML = ''
+    sizeElement.style.display = 'none'
+  }
+
+  fileElement.addEventListener('change', function (e) {
+    const files = e.target.files
+    // if if user doesn't choose any file, size & type will error, and files.length can't be printed
+    // const size = files[0].size
+    // const type = files[0].type
+    // console.log(files.length)
+    /*
+    Uncaught TypeError: Cannot read properties of undefined (reading 'size') at HTMLInputElement.<anonymous>
+    */
+
+
+    // Hide the size element if user doesn't choose any file
+    if (files.length === 0) {
+      clear()
+      return false
+    } else {
+      // if user choose file
+      const size = files[0].size
+      const type = files[0].type
+
+      // check file size, type
+      if (Math.floor(size / Math.pow(1024, 2)) >= 1) {
+        alert('Please make sure your file is less than 1 MB.')
+        clear()
+        return false
+      } else if (!type.includes('image')) {
+        alert('Please make sure your file is in png or jpg format.')
+        clear()
+        return false
+      } else {
+        sizeElement.innerHTML = formatFileSize(size)
+        sizeElement.style.display = 'block'
+      }
+    }
+  })
+})
+
+
+// Get the closest element by given selector
+// 1. Use the native closest() method
+// const result = btn.closest('.container') // div.container
+// const result = btn.closest('.content') // null
+// const result = btn.closest('.fisrt-agenda') // null
+// console.log(result)
+// note: element.closest() returns the closest ancestor
+// Note that the closest method isn't supported in IE.
+
+// 2. Traverse up until find the matching element
+const match = function (ele, selector) {
+  return (
+    ele.matches ||
+    ele.matchesSelector ||
+    ele.msMatchesSelector ||
+    ele.mozMatchesSelector ||
+    ele.webkitMatchesSelector ||
+    ele.oMatchesSelector
+  ).call(ele, selector)
 }
 
-const nodeList = document.querySelector('.container')
-const htmlCollection = document.getElementsByClassName('container')
-console.log(nodeList)
-console.log(htmlCollection)
+// Find the closest element to 'ele' and matches the 'selector'
+const closest = function (ele, selector) {
+  let e = ele
+  while (e) {
+    if (matches(e, selector)) {
+      break
+    }
+    e = e.parentNode
+  }
+  return e
+}
 
 
+// Get the document height and width
+// Full height, including the scroll part
+const fullHeight = Math.max(
+  document.body.scrollHeight,
+  document.documentElement.scrollHeight,
+  document.body.offsetHeight,
+  document.documentElement.offsetHeight,
+  document.body.clientHeight,
+  document.documentElement.clientHeight
+)
+
+// Full width, including the scroll part
+const fullWidth = Math.max(
+  document.body.scrollWidth,
+  document.documentElement.scrollWidth,
+  document.body.offsetWidth,
+  document.documentElement.offsetWidth,
+  document.body.clientWidth,
+  document.documentElement.clientWidth
+)
+// console.log(fullHeight, fullWidth)
+
+
+// Get the parent node of an element
+// const parent = ele.parentNode
+
+
+// Get the position of an element relative to another
+// const eleRect = ele.getBoundingClientRect()
+// const targetRect = ele.getBoundingClientRect()
+
+// const top = eleRect.top - targetRect.top
+// const left = eleRect.left - targetRect.left
+
+
+// Get the top, left coordinates of the element
+// const rect = ele.getBoundingClientRect()
+// const top = rect.top + document.body.scrollTop
+// const left = rect.left + document.body.scrollLeft
+
+
+// Get the selected text
+// btn.addEventListener('click', function (e) {
+//   const selectedText = window.getSelection().toString()
+//   alert(selectedText)
+// })
+
+
+// Get the size of an image
+// Image is already loaded
+// const image = document.querySelector('...')
+// // Get the original size
+// const naturalWidth = image.naturalWidth
+// const naturalHeight = image.naturalHeight
+// // Get the scaled size
+// const width = image.width
+// const height = image.height
+
+// Image is not loaded yet
+const image = document.createElement('img')
+image.addEventListener('load', function (e) {
+  // Get the size
+  const width = e.target.width
+  const height = e.target.height
+})
+// Set the source
+image.src = '/path/to/image.png'
+
+// We can use a Promise to turn the snippet to a reusable function:
+const CalculateSize = function (url) {
+  return new Promise(function (resolve, reject) {
+    const image = document.createElement('img')
+    image.addEventListener('load', function (e) {
+      resolve({
+        width: e.target.width,
+        height: e.target.height
+      })
+    })
+    image.addEventListener('error', function () {
+      reject()
+    })
+    image.src = url
+  })
+}
+
+CalculateSize('/path/to/image.png').then(function (data) {
+  const width = data.width
+  const height = data.height
+})
