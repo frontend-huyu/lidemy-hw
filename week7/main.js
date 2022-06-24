@@ -621,3 +621,129 @@ CalculateSize('/path/to/image.png').then(function (data) {
   const width = data.width
   const height = data.height
 })
+
+// Use case
+// First, we need to get the selected file, and then load it via FileReader:
+const avatarEle = document.getElementById('avatar')
+const sizeEle = document.getElementById('img-size')
+
+avatarEle.addEventListener('change', function (e) {
+  // get the selected file
+  const file = e.target.files[0]
+  // console.log(file)
+  // console.log(e.target)
+  const reader = new FileReader()
+  reader.readAsDataURL(file)
+
+  // progress events: loadstart, progress, error, abort, load, loadend
+  // load: fires only when all data has been successfully read.
+  // loadend: fires when the object has finished transferring data. Always fires and will always fire after error, abort, or load.
+  reader.addEventListener('loadend', function (e) {
+    const src = e.target.result
+    // console.log(e.target)
+
+    CalculateSize(src).then(function (data) {
+      const width = data.width
+      const height = data.height
+      sizeEle.innerHTML = `${width} x ${height}`
+    })
+  })
+})
+
+
+// Get the text content of an element
+// Returns the raw text content of the ele element and its children. All the HTML tags are excluded.
+const text = container.textContent
+// console.log(text)
+
+
+// Go back to the previous page
+// history.back()
+// or
+// history.go(-1)
+// note: It has the same effect as calling history.go(-1). If there is no previous page, this method call does nothing.
+
+
+// Insert an element after or before other element
+// Insert after
+// refEle.parentNode.insertBefore(ele, refEle.nextSibling)
+// or
+// refEle.insertAdjacentElement('afterend', ele)
+
+// Insert before
+// refEle.parentNode.insertBefore(ele, refEle)
+// or
+// refEle.insertAdjacentElement('beforebegin', ele)
+
+
+// Insert given HTML after or before an element
+// Insert after
+// ele.insertAdjacentHTML('afterend', html)
+
+// Insert before
+// ele.insertAdjacentHTML('beforebegin', html)
+
+
+// Loop over a nodelist
+// 1. Use the ES6 spread operator
+// const elements = document.querySelectorAll('...')
+// [...elements].forEach(function (ele) {
+//   // ...
+// })
+
+// 2. Use the Array methods
+// 'Array.from' is not supported on IE
+// Array.from(elements).forEach(function (ele) {
+
+// })
+// or
+// [].forEach.call(elements, function (ele) {
+
+// })
+// or
+// [].slice.call(elements, 0).forEach(function (ele) {
+
+// })
+
+// 3. Use the forEach method
+// If you don't have to support Internet Explorer, then use the forEach method:
+// elements.forEach(function (ele) {
+
+// })
+
+
+// Prepend to an element
+// target.insertBefore(ele, target.firstChild)
+
+
+// Press Shift and Enter for a new line
+const message = document.getElementById('message')
+
+// To prevent the default behavior of pressing the Enter key, we can handle the keydown event:
+message.addEventListener('keydown', function (e) {
+  // Get the code of pressed key
+  // const keyCode = e.which || e.keyCode
+  // note: 'which' and 'keyCode' both are deprecated
+
+  // Code values on Windows =>
+  // ShiftLeft: 0x002A; ShiftRight: 0x0036
+  // Code values on Mac =>
+  // ShiftLeft: kVK_Shift; ShiftRight: kVK_RightShift
+  // Code values on Linux (X11) =>
+  // ShiftLeft: 0x0032; ShiftRight: 0x003E
+  // Code values on Firefox for Android  =>
+  // ShiftLeft: 0x002A; ShiftRight: 0x0036
+
+  // or KeyboardEvent.key
+  const keyDown = e.key
+  // console.log(keyDown)
+
+  if (keyDown === 'Shift' && 'Enter') {
+    // Don't generate a new line
+    // note: is it means don't generate ' \n ' or ' \r\n '?
+    e.preventDefault()
+
+    // Do something else such as send the message to back-end
+  }
+
+})
