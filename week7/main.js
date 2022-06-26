@@ -736,14 +736,345 @@ message.addEventListener('keydown', function (e) {
 
   // or KeyboardEvent.key
   const keyDown = e.key
-  // console.log(keyDown)
+  console.log(keyDown)
 
-  if (keyDown === 'Shift' && 'Enter') {
+  // user can not use 'Enter' to generate a new line
+  // press 'Enter' + not 'Shift' key will stop
+  // KeyboardEvent.shiftKey => true/false
+  if (keyDown === 'Enter' && !e.shiftKey) {
     // Don't generate a new line
-    // note: is it means don't generate ' \n ' or ' \r\n '?
     e.preventDefault()
 
     // Do something else such as send the message to back-end
   }
-
 })
+// note: event keys are the same on windows and mac, but not sure on other OS or browser
+
+
+// Prevent body from scrolling when opening a modal
+// Disable scrolling on the 'body' element when opening a modal
+// document.body.style.overflow = 'hidden'
+
+// Allow to scroll when closing the modal
+// document.body.style.removeProperty('overflow')
+
+
+// Prevent the default action of an event
+// 1. Return false for the on<event>
+// ele.onclick = function (e) {
+//   // Do something
+//   return false
+// }
+
+// 2. Use the preventDefault() method
+// event handlers:
+// ele.onclick = function (e) {
+//   e.preventDefault()
+//   // Do something
+// }
+// ele.addEventListener('click', function (e) {
+//   e.preventDefault()
+//   // Do something
+// })
+// note: use cases are practical
+
+
+// Prevent the page from scrolling to an element when it is focused
+// element.focus({
+//   preventScroll: true,
+// })
+// However, the option is not fully supported in all browsers. 
+// IE, Safari, Safari on iOS are not supported 2022/6
+
+// Scroll to the previous point
+// This approach works in all browsers. We store the mouse location before calling the focus() method, and then scroll to that location later:
+const x = window.scrollX
+const y = window.scrollY
+// ele.focus()
+// Scroll to the previous location
+window.scrollTo(x, y)
+// note: need more research
+
+
+// Put cursor at the end of an input
+const fullNameEle = document.getElementById('fullName')
+editEle = document.getElementById('edit')
+
+editEle.addEventListener('click', function (e) {
+  // focus on the full name element
+  fullNameEle.focus()
+
+  // Move the cursor to the end
+  const length = fullNameEle.value.length
+  fullNameEle.setSelectionRange(length, length)
+})
+
+
+// Redirect to another page
+// location.href = '/the/new/url'
+
+
+// Reload the current page
+// Reload and keep the POST data
+// location.reload()
+
+// Reload and ignore the POST data
+// location.href = location.href
+
+
+// Remove all children of a node
+// 1. Empty the inner HTML (not recommended)
+// ele.innerHTML = ''
+
+// 2. Remove child nodes
+// while (node.firstChild) {
+//   node.removeChild(node.firstChild)
+// }
+// note: there are other way to empty inner HTML, like 'textContent'
+
+
+// Remove an element
+// 1. Use the remove method
+// ele.remove();
+// Note that the remove method isn't supported in Internet Explorer.
+
+// 2. Use the removeChild method
+// if (ele.parentNode) {
+//   ele.parentNode.removeChild(ele)
+// }
+
+
+// Replace an element
+// The ele will be removed from the DOM tree, and is replaced with newEle:
+// ele.parentNode.replaceChild(newEle, ele)
+
+
+// Replace broken images
+// Replace the broken images with an image telling visitors that they are not found:
+// // Assume that I want to replace all images on the page
+const images = document.querySelectorAll('img')
+Array.prototype.forEach.call(images, function (ele) {
+  ele.addEventListener('error', function (e) {
+    e.target.src = '/path/to/404/image.png'
+  })
+})
+
+
+// Resize an iframe to fit its content
+// Assume that frame represents the iframe element.
+// frame.addEventListener('load', function () {
+//   // Get the height of the content
+//   const height = frame.contentDocument.body.scrollHeight
+
+//   // Set the height of iframe
+//   frame.setAttribute('height', `${height}px`)
+// })
+
+
+// Scroll to an element
+// Scroll to the ele element
+// ele.scrollIntoView()
+
+// Smoothly scroll
+// The behavior option isn't supported in IE and Safari.
+// ele.scrollIntoView({ behavior: 'smooth' })
+
+// Good to know
+// The similar CSS property which provides the same functionality is
+// scroll-behavior: smooth;
+// It [is not supported](https://developer.mozilla.org/en-US/docs/Web/CSS/scroll-behavior#Browser_compatibility) in IE and Safari.
+
+
+// Scroll to top of the page
+// window.scrollTo(pageX, pageY)
+
+// So, the following code scrolls to top of the page:
+// window.scrollTo(0, 0)
+
+
+// Select an element or list of elements
+// Select an element by given ID
+const hello = document.getElementById('hello')
+console.log(hello) // 
+// note: returns an Element object matching the specified ID
+
+// Select elements by class name
+let worldList = hello.getElementsByClassName('world')
+// note: The Element method getElementsByClassName() returns a live HTMLCollection which contains every descendant element which has the specified class name or names.
+// note: The method getElementsByClassName() on the Document interface works essentially the same way, except it acts on the entire document, starting at the document root.
+console.log(worldList) // HTMLCollection(3) [div.world, div.world, div.world]
+
+// Select elements by tag name
+const span = hello.getElementsByTagName('span')
+console.log(span) // HTMLCollection(3) [span, span, span]
+
+// Select elements by CSS selector
+worldList = hello.querySelectorAll('div.world')
+console.log(worldList) // NodeList(3) [div.world, div.world, div.world]
+
+const oneWorld = hello.querySelector('div.world')
+console.log(oneWorld) // returns the first Element within the document that matches the specified selector
+
+
+// Select the children of an element
+const childNodes = hello.childNodes
+console.log(childNodes) // NodeList(7) [text, div.world, text, div.world, text, div.world, text]
+
+const first = childNodes[0]
+// console.log(first) // #text
+const last = childNodes[childNodes.length - 1]
+
+// There are properties to access the first and last child directly:
+const firstChild = hello.firstChild
+const lastChild = hello.lastChild
+console.log(firstChild) // #text
+
+
+// Select the text content of an element
+// The following function selects the text content of the ele element:
+const selectText = function (ele) {
+  const selection = window.getSelection()
+  // returns a Selection object representing the range of text selected by the user or the current position of the caret
+  console.log(selection) // Selection {anchorNode: null, anchorOffset: 0, focusNode: null, focusOffset: 0, isCollapsed: true, …}
+
+  const range = document.createRange()
+  // returns a new Range object
+  // range.setStart(startNode, startOffset);
+  // range.setEnd(endNode, endOffset);
+  console.log(range) // Range {commonAncestorContainer: document, startContainer: document, startOffset: 0, endContainer: document, endOffset: 0, …}
+
+  range.selectNodeContents(ele)
+  // The Range.selectNodeContents() method sets the Range to contain the contents of a Node
+
+  selection.removeAllRanges()
+  selection.addRange(range)
+}
+
+// selectText(hello)
+// selectText(container)
+// note: still not realize how to use
+
+
+// Select the text of a textarea automatically
+message.addEventListener('focus', function (e) {
+  // select the text
+  e.target.select()
+})
+
+
+// Serialize form data into a query string
+// The following function serializes the form data which consists of names and values of its fields:
+const serialize = function (formEle) {
+  // Get all fields
+  const fields = Array.prototype.slice.call(formEle.elements, 0)
+  return fields
+    .map(function (ele) {
+      const name = ele.name
+      const type = ele.type
+
+      // ignore
+      // - field that does not have a name
+      // - disable field
+      // - `file` input
+      // - unselected checkbox/radio
+      if (!name || ele.disabled || type === 'file' || (/(checkbox|radio)/.test(type) && !ele.checked)) {
+        return ''
+      }
+
+      // Multiple select
+      if (type === 'select-multiple') {
+        return ele.options
+          .map(function (opt) {
+            return opt.selected ? `${encodeURIComponent(name)}=${encodeURIComponent(opt.value)}` : ''
+          })
+          .filter(function (item) {
+            return item
+          })
+          .join('&')
+      }
+      return `${encodeURIComponent(name)}=${encodeURIComponent(ele.value)}`
+    })
+    .filter(function (item) {
+      return item
+    })
+    .join('&')
+}
+// note: need an example to display
+// note: new FormData(), new URLSearchParams(data).toString(), for...of
+
+
+// Set CSS style for an element
+// ele.style.backgroundColor = 'red'
+// ele.style['backgroundColor'] = 'red'
+// ele.style['background-color'] = 'red'
+
+// Add new style
+ele.style.cssText += 'background-color: red; color: white'
+
+// Ignore previous style
+ele.style.cssText = 'background-color: red; color: white'
+
+// Remove a CSS style
+ele.style.removeProperty('background-color')
+// Dose Not work
+ele.style.removeProperty('backgroundColor')
+
+
+// Show or hide an element
+// Show an element
+ele.style.display = ''
+// note: does it means inline(initial value)?
+
+// Hide and element
+ele.style.display = 'none'
+
+
+// Strip HTML from a given text
+// 1. Get text content from a fake element (not recommended)
+const stripHtml = function (html) {
+  // Create new element
+  const ele = document.createElement('div')
+
+  // Set its HTML
+  ele.innerHTML = html
+
+  // Return the text only
+  return ele.textContent || ''
+}
+// This approach isn't recommended because it can cause a security issue if the input html consists of special tags, such as <script>. However, we can prevent the html from being executed by replacing the div tag with textarea:
+const stripHtml = function (html) {
+  const ele = document.createElement('textarea')
+  ele.innerHTML = html
+  return ele.textContent || ''
+}
+
+// 2. Use DOMParser
+const stripHtml = function (html) {
+  const doc = new DOMParser().parseFromString(html, 'text/html')
+  return doc.body.textContent || ''
+}
+
+// 3. Use template
+// The <template> tag holds a HTML content that is not to be rendered immediately. However, this is not supported on older browser such as IE 11.
+const stripHtml = function (html) {
+  const ele = document.createElement('template')
+  ele.innerHTML = html
+  return ele.content.textContent || ''
+}
+// note: be careful of tags like <script>
+
+
+// Submit a form with Ajax
+// The following function submits the data of formEle to the back-end using an Ajax request:
+const submit = function (formEle) {
+  return new Promise(function (resolve, reject) {
+    // Serialize form data
+    // See https://htmldom.dev/serialize-form-data-into-a-query-string
+    const params = serialize(formEle)
+
+    // Create new Ajax request
+    const req = new XMLHttpRequest()
+    req.open('POST', formEle.action, true)
+    req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8')
+  })
+}
