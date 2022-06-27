@@ -1009,50 +1009,50 @@ const serialize = function (formEle) {
 // ele.style['background-color'] = 'red'
 
 // Add new style
-ele.style.cssText += 'background-color: red; color: white'
+// ele.style.cssText += 'background-color: red; color: white'
 
 // Ignore previous style
-ele.style.cssText = 'background-color: red; color: white'
+// ele.style.cssText = 'background-color: red; color: white'
 
 // Remove a CSS style
-ele.style.removeProperty('background-color')
+// ele.style.removeProperty('background-color')
 // Dose Not work
-ele.style.removeProperty('backgroundColor')
+// ele.style.removeProperty('backgroundColor')
 
 
 // Show or hide an element
 // Show an element
-ele.style.display = ''
+// ele.style.display = ''
 // note: does it means inline(initial value)?
 
 // Hide and element
-ele.style.display = 'none'
+// ele.style.display = 'none'
 
 
 // Strip HTML from a given text
 // 1. Get text content from a fake element (not recommended)
-const stripHtml = function (html) {
-  // Create new element
-  const ele = document.createElement('div')
+// const stripHtml = function (html) {
+//   // Create new element
+//   const ele = document.createElement('div')
 
-  // Set its HTML
-  ele.innerHTML = html
+//   // Set its HTML
+//   ele.innerHTML = html
 
-  // Return the text only
-  return ele.textContent || ''
-}
+//   // Return the text only
+//   return ele.textContent || ''
+// }
 // This approach isn't recommended because it can cause a security issue if the input html consists of special tags, such as <script>. However, we can prevent the html from being executed by replacing the div tag with textarea:
-const stripHtml = function (html) {
-  const ele = document.createElement('textarea')
-  ele.innerHTML = html
-  return ele.textContent || ''
-}
+// const stripHtml = function (html) {
+//   const ele = document.createElement('textarea')
+//   ele.innerHTML = html
+//   return ele.textContent || ''
+// }
 
 // 2. Use DOMParser
-const stripHtml = function (html) {
-  const doc = new DOMParser().parseFromString(html, 'text/html')
-  return doc.body.textContent || ''
-}
+// const stripHtml = function (html) {
+//   const doc = new DOMParser().parseFromString(html, 'text/html')
+//   return doc.body.textContent || ''
+// }
 
 // 3. Use template
 // The <template> tag holds a HTML content that is not to be rendered immediately. However, this is not supported on older browser such as IE 11.
@@ -1076,5 +1076,166 @@ const submit = function (formEle) {
     const req = new XMLHttpRequest()
     req.open('POST', formEle.action, true)
     req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8')
+
+    // Handle the events
+    req.onload = function () {
+      if (req.status >= 200 && req.status < 400) {
+        resolve(req.responseText)
+      }
+    }
+    req.onerror = function () {
+      reject()
+    }
+
+    // Send it
+    req.send(params)
   })
 }
+
+// Usage
+const formEle = document.getElementById('...')
+submit(formEle).then(function (response) {
+  // `response` is what we got from the back-end
+  // We can parse it if the server returns a JSON
+  const data = JSON.parse(response)
+})
+
+// note: do more research and practices, it is a necessary and helpful solution
+
+
+// Swap two nodes
+const swap = function (nodeA, nodeB) {
+  const parentA = nodeA.parentNode
+  const siblingA = nodeA.nextSibling === nodeB ? nodeA : nodeA.nextSibling
+
+  // Move 'nodeA' to before the 'nodeB'
+  nodeB.parentNode.insertBefore(nodeA, nodeB)
+
+  // Move 'nodeB' to before the sibling of 'nodeA'
+  parentA.insertBefore(nodeB, siblingA)
+}
+
+
+// Toggle an element
+const toggle = function (ele) {
+  const display = ele.style.display
+  ele.style.display = display === 'none' ? 'block' : 'none'
+}
+
+
+// Toggle password visibility
+// In order to show the password, we turn the password element to an usual textbox whose type attribute is text:
+const passwordEle = document.getElementById('password')
+const toggleEle = document.getElementById('toggle')
+
+toggleEle.addEventListener('click', function () {
+  const type = passwordEle.getAttribute('type')
+
+  passwordEle.setAttribute(
+    'type',
+    // Switch it to a text field if it's a password field
+    // current, and vice versa
+    type === 'password' ? 'text' : 'password'
+  )
+})
+
+
+// Trigger an event
+// Trigger event for inputs
+// There are some special events that are available as the method's element. You can call them directly such as following:
+// For text box and textarea
+// ele.focus()
+// ele.blur()
+// note: The HTMLElement.blur() method removes keyboard focus from the current element.
+
+// For form element
+// formEle.reset()
+// formEle.submit()
+// note: The HTMLFormElement.reset() method restores a form element's default values. This method does the same thing as clicking the form's <input type="reset"> control.
+
+// For any element
+// ele.click()
+
+
+// Trigger a native event
+// const trigger = function (ele, eventName) {
+//   const e = document.createEvent('HTMLEvents')
+//   e.initEvent(eventName, true, false)
+//   // Deprecated, it does not be supported in Node.js
+//   ele.dispatchEvent(e)
+// }
+
+// You can trigger the change, keyup, mousedown and more by calling
+// trigger(ele, 'mousedown')
+
+// Trigger a custom event
+// The sample code below triggers a custom event named hello with a data of { message: 'Hello World' }:
+// const e = document.createEvent('CustomEvent')
+// e.initCustomEvent('hello', true, true, { message: 'Hello World' })
+// Deprecated, it does not be supported in Node.js
+// Trigger the event
+// ele.dispatchEvent(e)
+
+
+// Unwrap an element
+// const parent = ele.parentNode
+
+// Move all children node to the parent
+// while (ele.firstChild) {
+//   parent.insertBefore(ele.firstChild, ele)
+// }
+
+// 'ele' becomes an empty element
+// Remove it from the parent
+// parent.removeChild(ele)
+
+
+// Upload files with Ajax
+// The function below sends selected files from a fileEle element to a back-end:
+const upload = function (fileEle, backendUrl) {
+  return new Promise(function (resolve, reject) {
+    // Get the list of selected files
+    const files = fileEle.files
+
+    // Create a new FormData
+    const formData = new FormData()
+
+    // Loop over the files
+    Array.prototype.forEach.call(files, function (file) {
+      formData.append(fileEle.name, file, file.name)
+    })
+
+    // Create new Ajax request
+    const req = new XMLHttpRequest()
+    req.open('POST', backendUrl, true)
+
+    // Handle the events
+    req.onload = function () {
+      if (req.status >= 200 && req.status < 400) {
+        resolve(req.responseText)
+      }
+    }
+    req.onerror = function () {
+      reject()
+    }
+
+    // Send it
+    req.send(formData)
+  })
+}
+
+// Usage
+// We can use the following code inside a click event handler of a button which performs the uploading:
+const fileEle = document.getElementById('ajaxUpload')
+upload(fileEle, 'paht/to/back-end').then(function (response) {
+  // 'response' is what we got from the back-end
+  // we can parse it if the server return a JSON
+  const data = JSON.parse(response)
+})
+
+// Wrap an element around a given element
+// First, insert `wrapper` before `ele` in its parent node
+ele.parentNode.insertBefore(wrapper, ele)
+
+// And then, turn `ele` into a children of `wrapper`
+wrapper.appendChild(ele)
