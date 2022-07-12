@@ -72,7 +72,7 @@ function Cat(name, color) {
   this.name = name
   this.color = color
 }
-
+// console.log(Cat.prototype) // {}
 Cat.prototype.species = 'cat'
 Cat.prototype.favorite = () => {
   console.log('eat and sleep')
@@ -114,18 +114,21 @@ const cat2 = new Cat('Tora', 'orange')
 // console.log(cat1.hasOwnProperty('constructor')) // false
 // console.log(cat1.__proto__.hasOwnProperty('constructor')) // true
 
-console.log('name' in cat1) // true
-console.log('species' in cat1) // true
+// console.log('name' in cat1) // true
+// console.log('species' in cat1) // true
 
-// Cat.prototype = {}
-// const cat3 = new Cat()
-// console.log(cat3.constructor === Cat) // false
-// console.log(cat3.constructor === Object) // true
+console.log(cat1.constructor) // [Function: Cat]
+console.log(cat2.constructor) // [Function: Cat]
 
-// console.log(cat1.constructor === Cat) // true
-// console.log(cat1.constructor === Object) // false
-// console.log(cat2.constructor === Cat) // true
-// console.log(cat2.constructor === Object) // false
+Cat.prototype = {}
+const cat3 = new Cat()
+console.log(cat3.constructor === Cat) // false
+console.log(cat3.constructor === Object) // true
+
+console.log(cat1.constructor === Cat) // true
+console.log(cat1.constructor === Object) // false
+console.log(cat2.constructor === Cat) // true
+console.log(cat2.constructor === Object) // false
 // note: pass by sharing
 
 
@@ -139,10 +142,10 @@ let rabbit = {
 
 rabbit.__proto__ = animal
 
-console.log(rabbit.jumps) // true
-console.log(rabbit.eats) // true // get property from 'animal'
+// console.log(rabbit.jumps) // true
+// console.log(rabbit.eats) // true // get property from 'animal'
 
-console.log(rabbit.__proto__) // { eats: true } // inherit from 'animal'
-console.log(rabbit.__proto__.__proto__) // [Object: null prototype] {}
-console.log(rabbit.__proto__.__proto__.__proto__) // null
-console.log(rabbit.a) // undefined
+// console.log(rabbit.__proto__) // { eats: true } // inherit from 'animal'
+// console.log(rabbit.__proto__.__proto__) // [Object: null prototype] {}
+// console.log(rabbit.__proto__.__proto__.__proto__) // null
+// console.log(rabbit.a) // undefined
