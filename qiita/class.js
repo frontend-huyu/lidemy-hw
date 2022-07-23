@@ -115,9 +115,9 @@ class Person {
   constructor(name, nation) {
     this.name = name
     this.nation = nation
-    // this.test = function () {
-    //   return `${this._name} ${this._nation}`
-    // }
+    this.test = function () {
+      return `${this._name} ${this._nation}`
+    }
   }
 
   get greeting() {
@@ -140,9 +140,9 @@ class Person {
     this._nation = value
   }
 
-  test() {
-    return `${this._name} ${this._nation}`
-  }
+  // test() {
+  //   return `${this._name} ${this._nation}`
+  // }
 }
 
 for (let key in new Person('Taro', 'Japan')) {
@@ -151,6 +151,14 @@ for (let key in new Person('Taro', 'Japan')) {
 // _name
 // _nation
 
+console.log(Person.hasOwnProperty('birthYear'))
+console.log(Person.hasOwnProperty('test'))
+
+console.log(Person.prototype.hasOwnProperty('birthYear'))
+console.log(Person.prototype.hasOwnProperty('test'))
+
+console.log(Person.prototype.constructor.hasOwnProperty('birthYear'))
+console.log(Person.prototype.constructor.hasOwnProperty('test'))
 
 // const Mio = new Person('', '')
 // // Name is too short.
