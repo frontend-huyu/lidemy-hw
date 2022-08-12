@@ -130,7 +130,7 @@
 // console.log({}.toString.call(new ValidatorClass(user1)))
 // // [object ValidUser]
 // console.log({}.toString.call(new ValidatorClass(user2)))
-// // [object ValidUser]
+// // [object ValidAdmin]
 
 
 //
