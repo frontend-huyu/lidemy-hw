@@ -11,7 +11,6 @@
 // best // cache the lookup once
 // const has = Object.prototype.hasOwnProperty
 
-
 // 3.8 prefer-object-spread
 // very bad // mutate `original`
 // const original = { a: 1, b: 2 }
@@ -25,7 +24,6 @@
 // const { a, ...rest } = copy
 // console.log(original) // { a: 1, b: 2 }
 // console.log(copy) // { a: 1, b: 2, c: 3 }
-
 
 // Array
 // 4.5
@@ -221,11 +219,13 @@
 
 // // bad
 // [1, 2, 3].map(number => (
-//   `A long string with the ${number}. It's so long that we don't want it to take up space on the .map line!`
+//   `A long string with the ${number}. /
+// It's so long that we don't want it to take up space on the .map line!`
 // ));
 // // good
 // [1, 2, 3].map((number) => (
-//   `A long string with the ${number}. It's so long that we don't want it to take up space on the .map line!`
+//   `A long string with the ${number}. /
+// It's so long that we don't want it to take up space on the .map line!`
 // ))
 
 // // bad
@@ -254,7 +254,7 @@
 
 // Classes & Constructors
 // 9.1 // Always use class. Avoid manipulating prototype directly
-// // bad
+// bad
 // function Queue(contents = []) {
 //   this.queue = [...contents];
 // }
@@ -512,3 +512,333 @@
 // })
 // // best
 // const increaseByOne = numbers.map((num) => num + 1);
+
+// Variables
+// 13.4
+// // bad // unnecessary function call
+// function checkName(hasName) {
+//   const name = getName();
+
+//   if (hasName === 'test') {
+//     return false;
+//   }
+//   if (name === 'test') {
+//     this.setName('');
+//     return false;
+//   }
+//   return name;
+// }
+
+// // good
+// function checkName(hasName) {
+//   if (hasName === 'test') {
+//     return false;
+//   }
+
+//   const name = getName();
+
+//   if (name === 'test') {
+//     this.setName('');
+//     return false;
+//   }
+//   return name;
+// }
+
+// 13.5 no-multi-assign
+// // bad // Chaining variable assignments create implicit global variable
+// (function example() {
+//   let a = b = c = 1;
+// }());
+// // console.log(a); // ReferenceError: a is not defined
+// console.log(b); // 1
+// console.log(c); // 1
+
+// 13.6 no-plusplus
+// // bad // unary increment(+)/decrement(-) statements can cause silent errors
+// const array = [1, 2, 3];
+// let num = 1;
+// num++;
+// --num;
+
+// let sum = 0;
+// let truthyCount = 0;
+// for (let i = 0; i < array.length; i++) {
+//   let value = array[i];
+//   sum += value;
+//   if (value) {
+//     truthyCount++;
+//   }
+// }
+// console.log(truthyCount, num) // 3 1
+
+// // good
+// const array = [1, 2, 3];
+// let num = 1;
+// num += 1;
+// num -= 1;
+// const sum = array.reduce((a, b) => a + b, 0);
+// const truthyCount = array.filter(Boolean).length;
+// console.log(truthyCount, num) // 3 1
+// // note: silent error are errors do not trigger any kind of reporting.
+
+// 13.7 max-len operator-linebreak
+// // good
+// const foo = (
+//   superLongLongLongLongLongLongLongLongFunctionName()
+// );
+// // // good
+// const foo = 'superLongLongLongLongLongLongLongLongString';
+
+// Comparison Operators & Equality
+// 15.3
+// // bad
+// if (name) { }
+// // good // use explicit comparisons for string
+// if (name !== '') { }
+// // bad
+// if (collection.length) { }
+// // good // use explicit comparisons for number
+// if (collection.length > 0) { }
+
+// 15.5 no-case-declarations
+// // bad
+// switch (foo) {
+//   case 1:
+//     let x = 1;
+//     break;
+//   case 2:
+//     const y = 2;
+//     break;
+// }
+
+// // good // create block in case/default for lexical declarations
+// switch(foo) {
+//   case 1: {
+//     let x = 1;
+//     break;
+//   }
+//   case 2: {
+//     const y = 2;
+//     break;
+//   }
+//   case 3: {
+//     function f() {
+//       // ...
+//     }
+//   }
+//   case 4:
+//   bar();
+//   break;
+//   default: {
+//     class C { }
+//   }
+// }
+
+// Control Statements
+// 17.1
+// // good
+// if (
+//   foo === 123
+//   && bar === 'abc'
+// ) {
+//   thing1();
+// }
+// // good
+// if (
+//   (foo === 123 || bar === 'abc')
+//   && doesItLookGoodWhenItBecomesThatLong()
+//   && isThisReallyHappening()
+// ) {
+//   thing1();
+// }
+// // good
+// if (foo === 123 && bar === 'abc') {
+//   thing1();
+// }
+
+// Comments
+// 18.1
+// // good
+// /**
+//  * make() returns a new element
+//  * based on the passed-in tag name
+//  */
+// function make(tag) {
+//   // ...
+//   return element;
+// }
+
+// 18.5 // ues // FIXME: to annotate problems
+// class Calculator extends Abacus {
+//   constructor() {
+//     super();
+
+//     // FIXME: shouldn't use a global here
+//     total = 0;
+//   }
+// }
+
+// // 18.6 // use // TODO: to annotate solutions to problems
+// class Calculator extends Abacus {
+//   super();
+
+//   // TODO: total should be configurable by an options param
+//   this.total = 0;
+// }
+
+// Whitespace
+// 19.7
+// // bad
+// const obj = {
+//   foo() {
+//   },
+//   bar() {
+//   },
+// };
+// // good
+// const obj = {
+//   foo() {
+//   },
+
+//   bar() {
+//   },
+// };
+
+// // bad
+// const arr = [
+//   function foo() {
+//   },
+//   function bar() {
+//   },
+// ];
+// // good
+// const arr = [
+//   function foo() {
+//   },
+
+//   function bar() {
+//   },
+// ];
+
+// Type Casting & Coercion
+// 22.2 no-new-wrappers
+// let reviewScore = 9;
+// // bad
+// const totalScore = new String(reviewScore);
+// console.log(typeof totalScore); // object
+// // bad
+// const totalScore = reviewScore + ''; // invokes reviewScore.valueOf()
+// console.log(reviewScore.valueOf()); // 9
+// // bad
+// const totalScore = reviewScore.toString(); // is not guaranteed to return a string
+// console.log(typeof totalScore); // string
+// // good
+// const totalScore = String(reviewScore);
+
+// 22.3 radix no-new-wrappers
+// let inputValue = '4';
+// // good
+// const val = Number(inputValue);
+// // good
+// const val = parseInt(inputValue, 10);
+
+// 22.4
+// let inputValue = '4';
+// good
+/**
+ * parseInt was the reason my code was slow.
+ * Bitshifting the String to coerce it to a
+ * Number made it a lot faster.
+ */
+// const val = inputValue >> 0;
+
+// 22.5
+/** note: Be careful when using bitshift operations.
+ * Numbers are represented as 64-bit values,
+ * but bitshift operations always return a 32-bit integer.
+ * Bitshift can lead to unexpected behavior for
+ * integer values larger than 32 bit.
+ * Largest signed 32-bit Int is 2,147,483,647
+*/
+// console.log(2147483647 >> 0); // 2147483647
+// console.log(2147483648 >> 0); // -2147483648
+// console.log(2147483649 >> 0); // -2147483647
+
+// 22.6 no-new-wrappers
+// const age = 0;
+// // bad
+// const hasAge = new Boolean(age);
+// // good
+// const hasAge = Boolean(age);
+// // best
+// const hasAge = !!age;
+
+// Naming Conventions
+// 23.4 no-underscore-dangle
+// // good
+// this.firstName = 'Panda';
+// // good, in environments where WeakMaps are available
+// // see https://kangax.github.io/compat-table/es6/#test-WeakMap
+// const firstNames = new WeakMap();
+// firstNames.set(this, 'Panda');
+
+// 23.5
+// don't save references to 'this'. Use arrow functions or bind()
+// // bad
+// function foo() {
+//   const self = this;
+//   return function () {
+//     console.log(self);
+//   };
+// }
+
+// // good
+// function foo() {
+//   return () => {
+//     console.log(this);
+//   };
+// }
+
+// 23.8
+// Use PascalCase when you export a constructor/class/singleton/function library/ bare object.
+// Singleton: a function or class which can have only one instance.
+// Bare object: objects created using null as the prototype value.
+
+// Accessors
+// 24.2
+/**
+ * Do not use JavaScript getters/setters as
+ * they cause unexpected side effects and harder to
+ * test, maintain, and reason about.
+*/
+// // bad
+// class Dragon {
+//   get age() {
+//     // ...
+//   }
+
+//   set age(value) {
+//     // ...
+//   }
+// }
+// // good
+// class Dragon {
+//   getAge() {
+//     // ...
+//   }
+
+//   setAge(value) {
+//     // ...
+//   }
+// }
+
+// 24.3
+// If the property/method is a boolean, use isVal() or hasVal()
+// bad
+// if (!dragon.age()) {
+//   return false;
+// }
+// // good
+// if (!dragon.hasAge()) {
+//   return false;
+// }
