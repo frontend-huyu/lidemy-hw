@@ -713,15 +713,18 @@
 // \p{Script=ScriptProperty} \p{Script_Extensions=ScriptProperty}
 // console.log('aA12あぁアァ一二三'.match(/\p{Script=Han}/gu));
 // // [ '一', '二', '三' ]
-// console.log('aA12あぁアァ一二三'.match(/\p{Script_Extensions=Hiragana}/gu));
+// console.log('aA12あぁアァ一二三'.match(/\p{Script=Hiragana}/gu));
 // // [ 'あ', 'ぁ' ]
-// console.log('aA12あぁアァ一二三'.match(/\p{Script_Extensions=Katakana}/gu));
+// console.log('aA12あぁアァ一二三'.match(/\p{Script=Katakana}/gu));
 // // [ 'ア', 'ァ' ]
 
-// console.log('ラッキー'.match(/\p{Script=Katakana}/gu));
+// console.log('ラッキー'.match(/\p{Script_Extensions=Katakana}/gu));
 // // [ 'ラ', 'ッ', 'キ', 'ー' ]
-// console.log('カービィ'.match(/\p{Script=Katakana}/gu));
+// console.log('カービィ'.match(/\p{Script_Extensions=Katakana}/gu));
 // // [ 'カ', 'ー', 'ビ', 'ィ' ]
+// console.log('゛゜'.match(/\p{Script_Extensions=Katakana}/gu));
+// // [ '゛', '゜' ]
+
 
 // // \P{}
 // console.log('aA12あぁアァ一二三'.match(/\P{Script_Extensions=Katakana}/gu));
