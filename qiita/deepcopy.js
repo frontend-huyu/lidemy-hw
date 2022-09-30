@@ -148,3 +148,41 @@ console.log(newGreeting.a) // 123
 //   add: [Function: add],
 //   innerMethod: { greet: [Function: greet], g: [ 3, 4, 5 ] }
 // }
+
+// Update 9.30.22
+const shallowClone = (obj) => {
+  const type = Object.prototype.toString
+  if (type.call(obj).includes('Array')) {
+    return [...obj]
+  }
+  return Object.assign({}, obj);
+};
+
+function deepClone(obj) {
+  const newObj = shallowClone(obj);
+
+  Object.keys(newObj)
+    .filter((key) => typeof newObj[key] === 'object')
+    .forEach((key) => {
+      newObj[key] = deepClone(newObj[key])
+    });
+  return newObj;
+}
+
+const obj = {
+  level: 1,
+  nest: {
+    level: 2,
+    arr: ['a', 'b', 'c'],
+    myMethod() {
+      console.log('my method')
+    }
+  }
+};
+const cloneObj = deepClone(obj);
+console.log(cloneObj);
+// {
+//   level: 1,
+//   nest: { level: 2, arr: [ 'a', 'b', 'c' ], myMethod: [Function: myMethod] }
+// }
+console.log(cloneObj.nest === obj.nest); // false
